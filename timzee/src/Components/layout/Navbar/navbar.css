@@ -5,11 +5,15 @@
     padding: 20px;
   }
   #Header .container-fluid .row {
+    display: flex;
     align-items: center;
+  }
+  #Header .logo{
+    display: inline-block;
   }
   #Header .container-fluid .row nav {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
   }
   form.example{
     position: relative;
@@ -22,8 +26,7 @@
     border-radius: 0px;
     float: left;
     width: 100%;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+  border-radius: 5px;
     position: relative;
     background: #f1f1f1;
   }
@@ -35,7 +38,11 @@
     
   }
   .Search{
+    width: 70%;
     margin-left: 10px;
+    position: absolute;
+    top: 100%;
+    z-index: 11111;
   }
   .SearchBody .list-group-item{
 list-style: none;
@@ -47,11 +54,12 @@ font-size: 18px;
   form.example button {
     float: left;
     width: 20%;
-    padding: 10px;
+    padding: 9px;
    outline: none;
-    background: #1b348b;
-    color: white;
-    font-size: 17px;
+   border-top-right-radius:5px !important;
+   border-bottom-right-radius:5px !important;
+    color: black !important;
+    font-size: 18px !important;
 
 
     border: none;
@@ -74,7 +82,7 @@ font-size: 18px;
     text-decoration: none;
     color: #AAAAAA;
     font-family: "Source Sans Pro", sans-serif;
-    font-size: 17px !important;
+    font-size: 15px !important;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     margin-left:15px;
@@ -83,8 +91,18 @@ font-size: 18px;
   #Header .container-fluid .row .site-header {
     display: flex;
     justify-content: end;
+    position: relative;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
+  }
+  #Header .container-fluid .row .site-header button{
+    text-decoration: none;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    background-color: transparent;
   }
   #Header .container-fluid .row .site-header a {
     text-decoration: none;
@@ -92,6 +110,10 @@ font-size: 18px;
     font-family: "Source Sans Pro", sans-serif;
     font-size: 20px;
     position: relative;
+  }
+  #Header .container-fluid .row .site-header .responsive{
+    display: none;
+
   }
   #Header .container-fluid .row .site-header a .basketNumber {
     position: absolute;
@@ -103,4 +125,16 @@ font-size: 18px;
     color: white;
     font-size: 12px;
   }
+  @media (max-width: 992px) {
+    #Header .container-fluid .row nav {
+      display: none !important;
+    }
+    #Header .container-fluid .row .site-header .responsive{
+      display: block;
+    }
+    #Header .container-fluid .row{
+      display: flex;
+      align-items: center;
+    }
   
+  }

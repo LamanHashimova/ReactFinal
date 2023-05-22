@@ -21,6 +21,7 @@ function LoginMain() {
     
             if (response.data.status === "success" || response.status === 200) {
               localStorage.setItem("token", response.data);
+              window.location.reload();
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -58,7 +59,7 @@ function LoginMain() {
             <span className="textSign">
                 <a href="#">Forgot your password?</a>
                 <Link to={'/register'}>Create account</Link>
-                <a href="#">Return to Store</a>
+                <Link to={'/'}>Return to Store</Link>
             </span>
         </Form>
    

@@ -2,18 +2,132 @@ import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import CustomModal  from '../../../Modal/CustomModal.js';
+import ProductModal from '../../../Modal/ProductModal';
+import { Link } from '@mui/material';
+import { useDispatch } from 'react-redux'
+import { decrease } from '../../../../../redux/stateSlice';
 import './Product.css'
 import axios from 'axios';
 function Product() {
+    const [products, setProducts] = useState([]);
+    const [popular, setPopular] = useState([]);
+    const [bestSeller, setBestSeller] = useState([]);
+    const [activeTab, setActiveTab] = useState('CLASSIC');
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedProductId , setSelectProductId] = useState(null);
+    const [productId, setProductId] = useState(); // Initialize state to store active tab name
+    const dispatch = useDispatch();
+    const openProduct = (evt, productName) => {
+        window.scrollTo(0, 1);
+      const tabContentList = document.getElementsByClassName('tabcontent');
+      for (let i = 0; i < tabContentList.length; i++) {
+        tabContentList[i].style.display = 'none';
+      }
+  
+      // Get all elements with className="tablinks" and remove the class "active"
+      const tabLinkList = document.getElementsByClassName('tablinks');
+      for (let i = 0; i < tabLinkList.length; i++) {
+        tabLinkList[i].className = tabLinkList[i].className.replace(' active', '');
+      }
+  
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(productName).style.display = 'block';
+      evt.currentTarget.className += ' active';
+  
+      setActiveTab(productName); // Update the active tab state
+
+}
+const handleModalOpen = (productId) => {
+    setSelectProductId(productId)
+  };
+
+  const handleModalClose = () => {
+    setSelectProductId(null)
+  };
+
+
+function addToWishlist(product) {
+    let pro = {
+        Id: product?.id,
+        title: product?.title,
+        save: product?.save,
+        price: product?.price,
+        oldprice: product?.discountedPrice,
+        mainimage: product?.mainImage,
+        brandname: product?.brand?.name,
+        count: 1,
+
+    }
+
+    let count = 0;
+    let wishlist = JSON.parse(localStorage.getItem('wishlist'))
+
+    if (wishlist != null) {
+        for (let i = 0; i < wishlist.length; i++) {
+            if (parseInt(wishlist[i].Id) === parseInt(pro?.Id)) {
+                wishlist[i].count = wishlist[i].count + 1
+                count = 1
+            }
+        }
+        if (count === 0) {
+            wishlist.push(pro)
+        }
+    }
+    else {
+        wishlist = []
+        wishlist.push(pro)
+    }
+    localStorage.setItem('wishlist', JSON.stringify(wishlist))
+    window.location.reload();
+    dispatch(decrease())
+}
+function addToBasket(product) {
+    let pro = {
+        Id: product?.id,
+        title: product?.title,
+        save: product?.save,
+        price: product?.price,
+        oldprice: product?.discountedPrice,
+        mainimage: product?.mainImage,
+        brandname: product?.brand?.name,
+        count: 1,
+
+    }
+
+    let count = 0;
+    let basket = JSON.parse(localStorage.getItem('basket'))
+
+    if (basket != null) {
+        for (let i = 0; i < basket.length; i++) {
+            if (parseInt(basket[i].Id) === parseInt(pro?.Id)) {
+                basket[i].count = basket[i].count + 1
+                count = 1
+            }
+        }
+        if (count === 0) {
+            basket.push(pro)
+        }
+    }
+    else {
+        basket = []
+        basket.push(pro)
+    }
+    localStorage.setItem('basket', JSON.stringify(basket))
+    window.location.reload();
+    dispatch(decrease())
+    
+}
     var settings = {
         dots: false,
         infinite: true,
         arrows: false,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 2,
-        initialSlide: true,
-        autoplay: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        
+        initialSlide: false,
+        autoplay: false,
         cssEase: "linear",
 
         responsive: [
@@ -23,7 +137,9 @@ function Product() {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
+                    initialSlide:false,
                     dots: true
+                    
                 }
             },
             {
@@ -31,927 +147,241 @@ function Product() {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 2,
-                    initialSlide: 2
+                   initialSlide:false,
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
+                    initialSlide:false,
+
                     slidesToScroll: 1
+                    
                 }
             }
         ]
     };
+    const loadProducts = async () => {
 
+        const result = await axios.get("api/Products/GetAllProducts");
+        setProducts(result.data)
+
+    };
+    const loadPopulars = async () => {
+
+        const result = await axios.get("api/Products/GetAllPopular");
+        setPopular(result.data)
+
+    };
+    const loadBestSellers = async () => {
+
+        const result = await axios.get("api/Products/GetAllBestSellers");
+        setBestSeller(result.data)
+
+    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        loadProducts();
+        loadPopulars();
+        loadBestSellers();
+    }, [productId]);
+    function addToBasket(product) {
+        let pro = {
+            Id: product?.id,
+            title: product?.title,
+            save: product?.save,
+            price: product?.price,
+            oldprice: product?.oldprice,
+            mainimage: product?.mainImage,
+            brandname: product?.brand?.name,
+            count: 1,
+
+        }
+
+        let count = 0;
+        let basket = JSON.parse(localStorage.getItem('basket'))
+
+        if (basket != null) {
+            for (let i = 0; i < basket.length; i++) {
+                if (parseInt(basket[i].Id) === parseInt(pro?.Id)) {
+                    basket[i].count = basket[i].count + 1
+                    count = 1
+                }
+            }
+            if (count === 0) {
+                basket.push(pro)
+            }
+        }
+        else {
+            basket = []
+            basket.push(pro)
+        }
+        localStorage.setItem('basket', JSON.stringify(basket))
+        window.location.reload();
+        dispatch(decrease())
+    }
+
+ 
   return (
     <div id="Products">
-    <div class="container">
-        <div class="product-heading">
+    <div className="container">
+        <div className="product-heading">
             <h2>Popular In Store</h2>
         </div>
-        <div class="tabmenu">
-            <div class="tab">
-                <button class="tablinks" onclick="openProduct(event, 'CLASSIC')">CLASSIC</button>
-                <button class="tablinks" onclick="openProduct(event, 'MODERN')">MODERN</button>
-                <button class="tablinks" onclick="openProduct(event, 'SPECIALEDITION')">SPECIAL EDITION</button>
-              </div>
+        <div className="tabmenu">
+        <div className="tab">
+            <button className={`tablinks ${activeTab === 'CLASSIC' ? 'active' : ''}`} onClick={(e) => {
+              openProduct(e, 'CLASSIC')
+                }}>CLASSIC</button>
+            <button className={`tablinks ${activeTab === 'MODERN' ? 'active' : ''}`} onClick={(e) => {
+               openProduct(e, 'MODERN'
+                )}}>MODERN</button>
+            <button className={`tablinks ${activeTab === 'SPECIALEDITION' ? 'active' : ''}`} onClick={(e) =>{
+                openProduct(e, 'SPECIALEDITION')
+                 }}>SPECIAL EDITION</button>
+            </div>
               
             
-              <div id="CLASSIC" class="tabcontent active-tab">
-                <div class="row">
-                   
-                    
-                      <div class="owl-carousel">
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a id="add-to-basket" href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a id="OpenModall" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>                 
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                      </div>
-                  
-                  </div>
-          
+              <div id="CLASSIC" className="tabcontent active">
+                <div className="row">
+                <Slider {...settings}>
+                {products?.map(product => (
+                                              <div className='col-lg-3'>
+                                                  <div className="product-single">
+                                                            <div className="pro-img">
+                                                                <a href="#">
+                                                                    <div className="overlay"></div>
+                                                                    <img src={`data:image/jpeg;base64,${product?.mainImage}`} alt="" />
+                                                                </a>
+                                                                <div className="Smallside">
+                                                                    <a href="#"><i className="fa-solid fa-window-restore"></i></a>
+                                                                    <button onClick={(e) => addToWishlist(product)}><i className="fa-solid fa-heart"></i></button>
+                                                                    <button onClick={() => handleModalOpen(product?.id)}><i className="fa-solid fa-magnifying-glass"></i></button>
+                                                          
+                                                          <ProductModal 
+                                                          key={product?.id}
+                                                          open={selectedProductId === product?.id} 
+                                                          onClose={handleModalClose} 
+                                                          productId={product?.id}/>
+                                                                </div>
+                                                                <div className="sale">
+                                                                    <span>Sale</span>
+                                                                </div>
+                                                                <div className="save">
+                                                                    <span>Save <b>20%</b></span>
+                                                                </div>
+                                                            </div>
+                                                            <div className="pro-content">
+                                                                <h4><a href="#">{product?.title}</a></h4>
+                                                                <div className="pricee">
+                                                                
+                                                                    <p className="m-0 prc" >${product?.price}</p>  
+                                                                    <p className="m-0 oldprc" >${product?.discountedPrice}</p>
+                                                                </div>
+                                                     
+                                                                <p className="m-0 title">{product?.brand.name}</p>
+                                                                <button onClick={(e) => addToBasket(product)}>Add to cart</button>
+                                                            </div>
+                                                </div>
+                                              </div>
+                                                ))}
+                </Slider>
+                </div>
                </div>
               
-              <div id="MODERN" class="tabcontent">
-                <div class="row">
-                   
-                    
-                    <div class="owl-carousel">
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                
+                <div id="MODERN" className="tabcontent ">
+                <div className="row">
+                <Slider {...settings}>
+                {popular?.map(product => (
+                                               <div className='col-lg-3'>
+                                               <div className="product-single">
+                                                         <div className="pro-img">
+                                                             <a href="#">
+                                                                 <div className="overlay"></div>
+                                                                 <img src={`data:image/jpeg;base64,${product?.mainImage}`} alt="" />
+                                                             </a>
+                                                             <div className="Smallside">
+                                                                 <a href="#"><i className="fa-solid fa-window-restore"></i></a>
+                                                                 <button onClick={(e) => addToWishlist(product)}><i className="fa-solid fa-heart"></i></button>
+                                                                    <button onClick={() => handleModalOpen(product?.id)}><i className="fa-solid fa-magnifying-glass"></i></button>
+                                                          
+                                                          <ProductModal 
+                                                          key={product?.id}
+                                                          open={selectedProductId === product?.id} 
+                                                          onClose={handleModalClose} 
+                                                          productId={product?.id}/>
+                                                             </div>
+                                                             <div className="sale">
+                                                                 <span>Sale</span>
+                                                             </div>
+                                                             <div className="save">
+                                                                 <span>Save <b>20%</b></span>
+                                                             </div>
+                                                         </div>
+                                                         <div className="pro-content">
+                                                             <h4><a href="#">Analog Numeral</a></h4>
+                                                             <div className="pricee">
+                                                             
+                                                                 <p className="m-0 prc" >$1550.00</p>  
+                                                                 <p className="m-0 oldprc" >$1550.00</p>
+                                                             </div>
+                                                     
+                                                             <p className="m-0 title">Baggit</p>
+                                                             <button onClick={(e) => addToBasket(product)}>Add to cart</button>
+                                                         </div>
+                                             </div>
+                                           </div>
+                                                ))}
+                 </Slider>
                 </div>
-         </div>
+                </div>
               
-              <div id="SPECIALEDITION" class="tabcontent">
-                <div class="row">
-                   
-                    
-                    <div class="owl-carousel">
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-single">
-                            <div class="pro-img">
-                                <a href="#">
-                                    <div class="overlay"></div>
-                                    <img src="assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp" alt=""/>
-                                </a>
-                                <div class="Smallside">
-                                    <a href="#"><i class="fa-solid fa-window-restore"></i></a>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
-                                <div class="save">
-                                    <span>Save <b>20%</b></span>
-                                </div>
-                            </div>
-                            <div class="pro-content">
-                                <h4><a href="#">Analog Numeral</a></h4>
-                                <div class="pricee">
-                                  
-                                    <p class="m-0 prc" >$1550.00</p>  
-                                    <p class="m-0 oldprc" >$1550.00</p>
-                                </div>
-                                <div class="range">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="m-0 title">Baggit</p>
-                                <button>Add to cart</button>
-                            </div>
-                        </div> 
-                    </div>
-                
+              <div id="SPECIALEDITION" className="tabcontent">
+                <div className="row">  
+                <Slider {...settings}>
+                {bestSeller?.map(product => (
+                                                 <div className='col-lg-3'>
+                                                 <div className="product-single">
+                                                           <div className="pro-img">
+                                                               <a href="#">
+                                                                   <div className="overlay"></div>
+                                                                   <img src={`data:image/jpeg;base64,${product?.mainImage}`} alt="" />
+                                                               </a>
+                                                               <div className="Smallside">
+                                                                   <a href="#"><i className="fa-solid fa-window-restore"></i></a>
+                                                                   <button onClick={(e) => addToWishlist(product)}><i className="fa-solid fa-heart"></i></button>
+                                                                    <button onClick={() => handleModalOpen(product?.id)}><i className="fa-solid fa-magnifying-glass"></i></button>
+                                                          
+                                                          <ProductModal 
+                                                          key={product?.id}
+                                                          open={selectedProductId === product?.id} 
+                                                          onClose={handleModalClose} 
+                                                          productId={product?.id}/>
+                                                               </div>
+                                                               <div className="sale">
+                                                                   <span>Sale</span>
+                                                               </div>
+                                                               <div className="save">
+                                                                   <span>Save <b>20%</b></span>
+                                                               </div>
+                                                           </div>
+                                                           <div className="pro-content">
+                                                               <h4><a href="#">Analog Numeral</a></h4>
+                                                               <div className="pricee">
+                                                               
+                                                                   <p className="m-0 prc" >$1550.00</p>  
+                                                                   <p className="m-0 oldprc" >$1550.00</p>
+                                                               </div>
+                                                            
+                                                               <p className="m-0 title">Baggit</p>
+                                                               <button onClick={(e) => addToBasket(product)}>Add to cart</button>
+                                                           </div>
+                                               </div>
+                                             </div>
+                                                ))}
+                 </Slider>
                 </div>
-
               </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -6,25 +6,58 @@ import './sliderMain.css'
 import axios from 'axios';
 function SliderMain() {
     const [slider, setSlider] = useState([]);
+    const [base64, setBase64] = useState("");
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const sliderRef = useRef(null);
+ 
+    const handleSlideChange = () => {
+        setTimeout(() => {
+          const activeSlide = sliderRef.current.querySelector('.slick-current');
+    
+          if (activeSlide) {
+            const slides = Array.from(sliderRef.current.querySelectorAll('.slick-slide'));
+    
+            slides.forEach(slide => {
+              const slideIndex = parseInt(slide.getAttribute('data-index'), 10);
+              const slideType = slider[slideIndex]?.sliderType;
+    
+              if (slideIndex !== parseInt(activeSlide.getAttribute('data-index'), 10)) {
+                slide.querySelector('.Bodyy').style.left = slideType === 'left' ? '15%' : slideType === 'right' ? '50%' : '20%';
+              } else {
+                slide.querySelector('.Bodyy').style.left = slideType === 'left' ? '20%' : slideType === 'right' ? '15%' : '20%';
+              }
+            });
+          }
+        }, 0);
+      };
+
+    console.log({slider});
+
     const loadSlider = async () => {
         const result = await axios.get("api/Sliders/GetAllSliders");
         setSlider(result.data)
+        console.log(result.data)
+    setBase64("data:image/jpeg;base64,");
 
     };
     useEffect(() => {
         window.scrollTo(0, 0);
         loadSlider();
-   
+  
     }, []);
+
+
+
+
     var settings = {
         dots: false,
         infinite: true,
         arrows: false,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         initialSlide: true,
-        autoplay: true,
+        autoplay: false,
         cssEase: "linear",
 
         responsive: [
@@ -62,64 +95,60 @@ function SliderMain() {
 
     return (
         <div id="Slider">
-            <div className="sliderBody">
-                <Slider {...settings}>
-               {slider?.map(slide=>
+            <div className="sliderBody"  ref={sliderRef}>
+                <Slider {...settings} beforeChange={handleSlideChange}>
+                {slider?.map((slide, index) => (
+
+            <div className="slick-1" key={slide?.id}>
+              <div className="slick-1-body">
+                <img src={`${base64}${slide?.image}`} />
+                {slide?.sliderType==="left"}
+                <div
+             
+                  style={
+                    currentSlide === index
+                      ? {
+                          top: "20%",
+                          left:
+                            slide?.sliderType === "left"
+                              ? "20%"
+                              : slide?.sliderType === "right"
+                              ? "65%"
+                              : slide?.sliderType === "center"
+                              ? "20%"
+                              : "20%",
+                          textAlign: slide?.sliderType === "center" ? "center" : "left",
+                        }
+                      : {
+                          top: "20%",
+                          right:
+                            slide?.sliderType === "left"
+                              ? "20%"
+                              : slide?.sliderType === "right"
+                              ? ""
+                              : slide?.sliderType === "center"
+                              ? "20%"
+                              : "20%",
+                              textAlign: slide?.sliderType === "center" ? "center" : "left",
+                        }
+                  }
+                  className="Bodyy"
+                >
+                  <h2>{slide.mainTitle}</h2>
+                  <p className="p-0">{slide?.saleInfo}</p>
+                  <div className="info">{slide?.subtitle}</div>
+                  <div className="offer-price">
+                    <span className="price">${slide?.price}</span>
+                  </div>
+                  <div className="explore">
+                    <a href="#">Explore Service</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
                 
-                <div style={{ backgroundImage: `url(${slide?.image})` }} className="slick-1" key={slide?.image}>
-                    <div  className="slick-1-body">
-                        <h2>{slide.mainTitle}</h2>  
-                        <p className="p-0">{slide?.subtitle}</p>
-                        <div className="info">{slide?.sliderInfo}</div>
-                        <div className="offer-price">
-                            <span className="price">${slide?.price}</span>
-                        </div>
-                        <div className="explore">
-                            <a href="#">Explore Service</a>
-                        </div>
-                    </div>
-                </div>
-                )} 
-
-                {/* <div className="slick-1">
-                    <div className="slick-1-body">
-                        <h2>Alertzy</h2>
-                        <p className="p-0">Exclusive Offer -20% Off This Week</p>
-                        <div className="info">Expanding the offering is the choice between a leather strap or a metal bracelet, bringing the total new look. Black-tone stainless steel case with a black rubber strap. Scratch free sapphire crystal.</div>
-                        <div className="offer-price">
-                            <span className="price">$ 250.00</span>
-                        </div>
-                        <div className="explore">
-                            <a href="#">EXPLORE SERVICES</a>
-                        </div>
-                    </div>
-                </div>
-                <div className="slick-2">
-                    <div className="slick-2-body">
-                        <h2>Gertious</h2>
-                        <p className="p-0">Exclusive of Sales Tax</p>
-                        <div className="info">The watch bracelet gives a much far colder personality.Dress watch style. Swiss made luxury watch. Stainless steel case with a brown leather strap. Scratch resistant sapphire crystal.</div>
-                        <div className="offer-price">
-                            <span className="old-price">$ 410.00</span>
-                            <span className="price">$ 250.00</span>
-                        </div>
-                        <div className="explore">
-                            <a href="#">EXPLORE SERVICES</a>
-                        </div>
-                    </div>
-
-                </div>
-                <div className="slick-3">
-                    <div className="slick-3-body">
-                        <h2>Gorgeus</h2>
-                        <p className="p-0">2019</p>
-                        <div className="info">One of the most advanced watch released during 2019. True style that always remains in fashion. Timepiece is the perfect complement to any outfit.</div>
-
-                        <div className="explore">
-                            <a href="#">EXPLORE SERVICES</a>
-                        </div>
-                    </div>
-                </div> */}
                 </Slider>
                 
             </div>

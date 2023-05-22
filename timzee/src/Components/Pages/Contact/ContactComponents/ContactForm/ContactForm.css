@@ -70,3 +70,14 @@
   transition: 0.5s;
   z-index: -10;
 }
+@media (max-width: 768px) {
+  #ContactForm .container .ContactFormAll form .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  #ContactForm .container .ContactFormAll form .submit button {
+    font-size: 15px;
+  }
+}

@@ -7,7 +7,7 @@ function journey() {
         <div className="container">
             <h2>Our journey so far...</h2>
             <div className="row">
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="singleaboutbox">
                         <div className="icon">
                             <i className="fa-solid fa-gear"></i>
@@ -18,7 +18,7 @@ function journey() {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="singleaboutbox">
                         <div className="icon">
                             <i className="fa-solid fa-tv"></i>
@@ -29,7 +29,7 @@ function journey() {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="singleaboutbox">
                         <div className="icon">
                             <i className="fa-solid fa-file-audio"></i>
@@ -40,7 +40,7 @@ function journey() {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="singleaboutbox">
                         <div className="icon">
                             <i className="fa-solid fa-user"></i>
@@ -51,7 +51,7 @@ function journey() {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="singleaboutbox">
                         <div className="icon">
                             <i className="fa-solid fa-mobile-screen"></i>
@@ -62,7 +62,7 @@ function journey() {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="singleaboutbox">
                         <div className="icon">
                             <i className="fa-solid fa-inbox"></i>

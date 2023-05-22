@@ -58,15 +58,13 @@
   opacity: 0;
   transition: 0.5s;
 }
+
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .Smallside a i {
   color: white;
   font-size: 20px;
   background-color: #343535;
   padding: 15PX;
   transition: 0.5s;
-}
-#AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .Smallside a i:hover {
-  background-color: #CCA471;
 }
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .sale span {
   font-size: 16px;
@@ -88,6 +86,11 @@
   right: 10px;
   top: 10px;
 }
+#AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .Smallside a i:hover {
+  background-color: #CCA471;
+}
+
+
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img a .overlay {
   position: absolute;
   background-color: #34353a;
@@ -109,6 +112,7 @@
   font-size: 25px;
 }
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-content .pricee {
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,17 +130,22 @@
   font-size: 22px;
   font-family: "Source Sans Pro", sans-serif;
 }
-#AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-content button {
+.BestSellers .BestSellerSlider .product-single .pro-img .Smallside button {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   font-family: "Source Sans Pro", sans-serif;
   color: #ffffff;
-  background-color: #343435;
-  padding: 20px 50px;
-  margin-top: 20px;
+  background-color: #343435 !important;
+  padding: 10px 10px;
+outline: none;
+border: none;
+transition: 0.3s;
   position: relative;
   z-index: 2;
+}
+.BestSellers .BestSellerSlider .product-single .pro-img .Smallside button:hover{
+  background-color:  #CCA471 !important;
 }
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-content button:hover::before {
   height: 100%;
@@ -205,6 +214,13 @@
   color: #AAAAAA;
   display: inline-block;
 }
+#AllShop .container-fluid .row .col-lg-3 .FilterShop .availability .stock span {
+  position: absolute;
+  right: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  color: #AAAAAA;
+}
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .availability .stock .inputStok label:before {
   content: "";
   -webkit-appearance: none;
@@ -235,13 +251,7 @@
   transform: rotate(45deg);
   box-shadow: 1px 1px 0px #030d1d;
 }
-#AllShop .container-fluid .row .col-lg-3 .FilterShop .availability .stock span {
-  position: absolute;
-  right: 0;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
-  color: #AAAAAA;
-}
+
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .Price {
   margin-top: 60px;
 }
@@ -266,11 +276,7 @@
   bottom: -10px;
   z-index: 11;
 }
-#AllShop .container-fluid .row .col-lg-3 .FilterShop .Price span {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
-  color: #AAAAAA;
-}
+
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .Price .allfield {
   margin-top: 30px;
   display: flex;
@@ -288,13 +294,21 @@
   align-items: center;
 }
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .Price .allfield .pricefield .inputdiv input {
+  color: #AAAAAA;
+  padding: 0 10px;
   width: 100%;
   height: 40px;
+  font-size: 20px;
   background-color: transparent;
   border: none;
   outline: none;
 }
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .Price .allfield .pricefield label {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  color: #AAAAAA;
+}
+#AllShop .container-fluid .row .col-lg-3 .FilterShop .Price span {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 20px;
   color: #AAAAAA;
@@ -351,6 +365,13 @@
   color: #AAAAAA;
   display: inline-block;
 }
+#AllShop .container-fluid .row .col-lg-3 .FilterShop .Producttype .type span {
+  position: absolute;
+  right: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  color: #AAAAAA;
+}
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .Producttype .type .TypeInput label:before {
   content: "";
   -webkit-appearance: none;
@@ -378,13 +399,7 @@
   transform: rotate(45deg);
   box-shadow: 1px 1px 0px #030d1d;
 }
-#AllShop .container-fluid .row .col-lg-3 .FilterShop .Producttype .type span {
-  position: absolute;
-  right: 0;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
-  color: #AAAAAA;
-}
+
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .Brand {
   margin-top: 60px;
 }
@@ -437,6 +452,13 @@
   color: #AAAAAA;
   display: inline-block;
 }
+#AllShop .container-fluid .row .col-lg-3 .FilterShop .Brand .brandd span {
+  position: absolute;
+  right: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  color: #AAAAAA;
+}
 #AllShop .container-fluid .row .col-lg-3 .FilterShop .Brand .brandd .BrandInput label:before {
   content: "";
   -webkit-appearance: none;
@@ -464,13 +486,7 @@
   transform: rotate(45deg);
   box-shadow: 1px 1px 0px #030d1d;
 }
-#AllShop .container-fluid .row .col-lg-3 .FilterShop .Brand .brandd span {
-  position: absolute;
-  right: 0;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
-  color: #AAAAAA;
-}
+
 #AllShop .container-fluid .row .col-lg-9 .ShopProducts {
   padding: 40px 0;
 }
@@ -532,6 +548,18 @@
   top: 20%;
   opacity: 0;
   transition: 0.5s;
+}
+#AllShop .container-fluid .row .col-lg-9 .ShopProducts .rightboxes .row .col-lg-3 .product-single .pro-img .Smallside button{
+  color: white;
+  font-size: 12px;
+  background-color: #343535;
+  padding: 10px 15PX;
+  transition: 0.5s;
+  outline: none;
+  border: none;
+}
+#AllShop .container-fluid .row .col-lg-9 .ShopProducts .rightboxes .row .col-lg-3 .product-single .pro-img .Smallside button:hover{
+  background-color: #CCA471;
 }
 #AllShop .container-fluid .row .col-lg-9 .ShopProducts .rightboxes .row .col-lg-3 .product-single .pro-img .Smallside a i {
   color: white;
@@ -639,4 +667,64 @@
   left: 0;
   z-index: -10;
   transition: 0.5s;
+}
+@media (max-width: 992px) {
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .Producttype .type .TypeInput label {
+    font-size: 15px;
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .Producttype .type span {
+    font-size: 15px;
+  } 
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .Brand .brandd .BrandInput label {
+    font-size: 15px;
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .Brand .brandd span {
+    font-size: 15px;
+
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .availability .stock .inputStok label {
+    font-size: 15px;
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .availability .stock span {
+    font-size: 15px;
+
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .Price .allfield .pricefield label {
+    font-size: 15px;
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .Price span {
+    font-size: 15px;
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .Smallside a i {
+    font-size: 9px;
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .sale span {
+    font-size: 12px;
+  }
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .Smallside button i{
+    color: white;
+    font-size: 12px;
+    background-color: #343535;
+    padding: 10px 15PX;
+    transition: 0.5s;
+    outline: none;
+    border: none;
+  }
+
+  #AllShop .container-fluid .row .col-lg-3 .FilterShop .BestSellers .BestSellerSlider .product-single .pro-img .save span {
+    font-size: 12px;
+  }
+}
+.pagination{
+  background-color: transparent;
+}
+.MuiPagination-ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.MuiButtonBase-root {
+  color: white !important;
 }

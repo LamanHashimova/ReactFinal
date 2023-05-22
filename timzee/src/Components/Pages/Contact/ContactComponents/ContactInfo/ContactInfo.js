@@ -6,7 +6,7 @@ function ContactInfo() {
     <div id="ContactInfo">
     <div className="container">
         <div className="row">
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="SingleContactInfo">
                     <div className="icon"><i className="fa-solid fa-phone"></i></div>
                    <h4>Phone</h4>
@@ -16,7 +16,7 @@ function ContactInfo() {
                    </div>
                 </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="SingleContactInfo">
                     <div className="icon"><i className="fa-solid fa-envelope"></i></div>
                    <h4>Email</h4>
@@ -26,7 +26,7 @@ function ContactInfo() {
                    </div>
                 </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="SingleContactInfo">
                     <div className="icon"><i className="fa-solid fa-location-arrow"></i></div>
                    <h4>Address</h4>

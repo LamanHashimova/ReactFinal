@@ -41,3 +41,8 @@
 #ContactInfo .container .row .col-lg-4 .SingleContactInfo .MainInfo p:hover {
   color: #CCA471;
 }
+@media (max-width: 992px) {
+  #ContactInfo .container .row .col-lg-4 .SingleContactInfo {
+   margin-bottom: 20px;
+  }
+}

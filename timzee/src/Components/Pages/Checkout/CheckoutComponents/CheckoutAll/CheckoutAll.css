@@ -6,6 +6,7 @@
   
   #Checkout {
     padding: 50px 0;
+    background-color: #fff;
   }
   #Checkout .container .col-lg-6 .allRight {
     padding: 0 30px;
@@ -63,9 +64,7 @@
     border-radius: 5px;
     padding: 10px;
   }
-  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .ContactData .conInput input:focus {
-    border: 2px solid #CCA471;
-  }
+  
   #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm {
     padding: 20px 0;
   }
@@ -96,9 +95,7 @@
     border-radius: 5px;
     padding: 10px;
   }
-  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .ForName input:focus {
-    border: 2px solid #CCA471;
-  }
+
   #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Address {
     margin-bottom: 20px;
   }
@@ -109,22 +106,19 @@
     border-radius: 5px;
     padding: 10px;
   }
-  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Address input:focus {
-    border: 2px solid #CCA471;
-  }
+
   #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Apartment {
     margin-bottom: 20px;
   }
   #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Apartment input {
     width: 100%;
     outline: none;
+    margin-top: 20px;
     border: 1px solid rgba(170, 170, 170, 0.6666666667);
     border-radius: 5px;
     padding: 10px;
   }
-  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Apartment input:focus {
-    border: 2px solid #CCA471;
-  }
+
   #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Postal {
     display: flex;
     gap: 20px;
@@ -136,9 +130,7 @@
     border-radius: 5px;
     padding: 10px;
   }
-  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Postal input:focus {
-    border: 2px solid #CCA471;
-  }
+
   #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Continue {
     padding: 20px 0;
     display: flex;
@@ -153,7 +145,7 @@
   #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Continue button {
     border: none;
     outline: none;
-    background-color: #CCA471;
+    background-color: #0E1D55;
     border-radius: 5px;
     padding: 20px;
     font-weight: 500;
@@ -170,11 +162,13 @@
   }
   #Checkout .container .col-lg-6 .allLeft .singleCart .imgCart {
     position: relative;
+    width: 20%;
   }
   #Checkout .container .col-lg-6 .allLeft .singleCart .imgCart img {
     border: 1px solid #d0d0d0;
     padding: 0 10px;
     border-radius: 5px;
+    width: 100%;
   }
   #Checkout .container .col-lg-6 .allLeft .singleCart .imgCart span {
     background-color: rgba(112, 112, 112, 0.8470588235);
@@ -194,7 +188,7 @@
     align-items: center;
   }
   #Checkout .container .col-lg-6 .allLeft .singleCart .ContentImg .ForInfo p {
-    font-size: 15px;
+    font-size: 18px;
     color: #000000;
     font-weight: 500;
   }

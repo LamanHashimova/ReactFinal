@@ -14,7 +14,7 @@ function Collection() {
     <div className="AllCollection">
       <div className="container-fluid">
         <div className="row">
-            <div className="single-collection col-lg-4 " style={{backgroundImage:`url(${backImageCollection1})`}}>
+            <div className="single-collection col-lg-4 col-md-6 " style={{backgroundImage:`url(${backImageCollection1})`}}>
          
                 <div className="overlay-body"></div>
                 <div className="text-body">
@@ -23,7 +23,7 @@ function Collection() {
                     <a href="#">View all Products</a>
                 </div>
             </div>
-            <div className="single-collection col-lg-4 " style={{backgroundImage:`url(${backImageCollection2})`}} >
+            <div className="single-collection col-lg-4 col-md-6" style={{backgroundImage:`url(${backImageCollection2})`}} >
                 <div className="overlay-body"></div>
                 <div className="text-body">
                     <h4>2019 Novalties  </h4>
@@ -31,7 +31,7 @@ function Collection() {
                     <a href="#">View all Collection</a>
                 </div>
             </div>
-            <div className="single-collection col-lg-4 " style={{backgroundImage:`url(${backImageCollection3})`}}>
+            <div className="single-collection col-lg-4 col-md-6" style={{backgroundImage:`url(${backImageCollection3})`}}>
                 <div className="overlay-body"></div>
                 <div className="text-body">
                     <h4>Javelin</h4>
@@ -39,7 +39,7 @@ function Collection() {
                     <a href="#">View all Collection</a>
                 </div>
             </div>
-            <div className="single-collection col-lg-4 " style={{backgroundImage:`url(${backImageCollection4})`}}>
+            <div className="single-collection col-lg-4 col-md-6" style={{backgroundImage:`url(${backImageCollection4})`}}>
                 <div className="overlay-body"></div>
                 <div className="text-body">
                     <h4>Voltamic</h4>
@@ -47,7 +47,7 @@ function Collection() {
                     <a href="#">View all Collection</a>
                 </div>
             </div>
-            <div className="single-collection col-lg-4 " style={{backgroundImage:`url(${backImageCollection5})`}}>
+            <div className="single-collection col-lg-4 col-md-6" style={{backgroundImage:`url(${backImageCollection5})`}}>
                 <div className="overlay-body"></div>
                 <div className="text-body">
                     <h4>Cerutaio</h4>
@@ -55,7 +55,7 @@ function Collection() {
                     <a href="#">View all Collection</a>
                 </div>
             </div>
-            <div className="single-collection col-lg-4 " style={{backgroundImage:`url(${backImageCollection6})`}}>
+            <div className="single-collection col-lg-4 col-md-6" style={{backgroundImage:`url(${backImageCollection6})`}}>
                 <div className="overlay-body"></div>
                 <div className="text-body">
                     <h4>Zerairo</h4>

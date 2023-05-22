@@ -9,7 +9,7 @@ function Footer() {
     <div id="Footer" style={{backgroundImage:`url(${backImageFooter})`}}>
     <div className="container">
         <div className="row">
-            <div className="singleFooterArea col-lg-3">
+            <div className="singleFooterArea col-lg-3 col-md-6">
                 <h5> Help </h5>
                 <ul>
                     <li><a href="#">Search</a></li>
@@ -19,7 +19,7 @@ function Footer() {
                     <li><a href="#">Shipping Details</a></li>
                 </ul>
             </div>
-            <div className="singleFooterArea col-lg-3">
+            <div className="singleFooterArea col-lg-3 col-md-6">
                 <h5> Support </h5>
                 <ul>
                     <li><a href="#">Contact us</a></li>
@@ -29,7 +29,7 @@ function Footer() {
                     <li><a href="#">Deliveries</a></li>
                 </ul>
             </div>
-            <div className="singleFooterArea col-lg-3">
+            <div className="singleFooterArea col-lg-3 col-md-6">
                 <h5> Information </h5>
                 <ul>
                     <li><a href="#">Search Terms</a></li>
@@ -39,7 +39,7 @@ function Footer() {
                     <li><a href="#">Orders & Returns</a></li>
                 </ul>
             </div>
-            <div className="singleFooterArea col-lg-3">
+            <div className="singleFooterArea col-lg-3 col-md-6">
                 <h5> Address </h5>
                 <ul>
                     <li><address>

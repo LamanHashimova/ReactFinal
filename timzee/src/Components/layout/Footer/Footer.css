@@ -46,3 +46,9 @@
    color: #AAAAAA;
    font-family: "Source Sans Pro", sans-serif;
  }/*# sourceMappingURL=style.css.map */
+
+ @media (max-width: 992px) {
+  #Footer .container .row .singleFooterArea{
+    margin-bottom: 30px;
+  }
+}

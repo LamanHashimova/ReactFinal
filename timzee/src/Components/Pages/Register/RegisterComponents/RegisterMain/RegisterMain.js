@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './RegisterMain.css'
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -13,16 +14,19 @@ function RegisterMain() {
     const [password, setPassword] = useState();
     const navigate = useNavigate();
 
+    const bodyParametres = {
+        Name: name,
+        Surname: surname,
+        Email: email,
+        UserName: username,
+        Password: password,
+    }
     async function register(e) {
 
-        await axios.post('api/Auth/Register', {
-            Name: name,
-            Surname: surname,
-            Email: email,
-            UserName: username,
-            Password: password,
+        await axios.post('api/Auth/Register',
+            bodyParametres
 
-        }, { 'Content-Type': 'multipart/form-data' })
+        )
             .then(function (response) {
 
                 Swal.fire({
@@ -32,8 +36,6 @@ function RegisterMain() {
                     showConfirmButton: false,
                     timer: 1500
                 })
-
-                navigate('/')
             })
             .catch(function (error) {
 
@@ -51,8 +53,8 @@ function RegisterMain() {
                     <Form.Control type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                     <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                     <div className="Sign">
-                        <button type="submit">Sign In</button>
-                        {/* <a href="#">Return To Store</a> */}
+                        <button type="submit">Sign Up</button>
+                        <Link to={"/"}>Return To Store</Link>
                     </div>
 
                 </Form>

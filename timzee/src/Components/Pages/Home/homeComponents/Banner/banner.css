@@ -1,145 +1,152 @@
 #Banner {
-    background-color: #010209;
-    padding: 80px 0;
-  }
-  #Banner .container-fluid .row {
-    margin: 0 3.5%;
-  }
-  #Banner .container-fluid .row .men {
-    /* background-image: url(/assets/Images/Untitled-1.webp); */
-    background-size: cover;
-    background-position: center;
-    text-align: end;
-    padding: 40px 20px ;
-    /* border: 6px solid #34353a; */
-    border: 6px solid #34353a;
+  background-color: #010209;
+  padding: 10% 0;
+}
+#Banner .container-fluid .row {
+  margin: 0 3.5%;
+}
+#Banner .container-fluid .row .men {
+  /* background-image: url(/assets/Images/Untitled-1.webp); */
+  background-size: cover;
+  background-position: center;
+  text-align: end;
+  padding: 40px 20px ;
+  /* border: 6px solid #34353a; */
+  border: 6px solid #34353a;
 
-    position: relative !important;
-    z-index: 1;
-    cursor: pointer;
-  }
-  #Banner .container-fluid .row .men:hover:before {
-    opacity: 0.7;
-  }
-  #Banner .container-fluid .row .men:before {
-    content: "";
-    background-color: #091338;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    z-index: -1;
-    transition: 0.5s;
-    opacity: 0;
-  }
-  #Banner .container-fluid .row .men h6 {
-    font-style: italic;
-    font-size: 24px;
-    font-family: "Playfair Display", serif;
-    color: #CCA471;
-  }
-  #Banner .container-fluid .row .men a {
-    text-decoration: none;
-    font-size: 30px ;
-    font-family: "Playfair Display", serif;
-    color: white;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
-  #Banner .container-fluid .row .men p {
-    font-size: 20px;
-    font-family: "Source Sans Pro", sans-serif;
-    color: #AAAAAA;
-  }
-  #Banner .container-fluid .row .women {
-    /* background-image: url(/assets/Images/promo2_c5444c07-50e6-4452-90ed-99ca49a106fc.webp); */
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 40px 20px;
-    border: 6px solid #34353a;
-    z-index: 1;
-    position: relative;
-    cursor: pointer;
-  }
-  #Banner .container-fluid .row .women:hover:before {
-    opacity: 0.7;
-  }
-  #Banner .container-fluid .row .women:before {
-    content: "";
-    background-color: #091338;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    z-index: -1;
-    transition: 0.5s;
-    opacity: 0;
-  }
-  #Banner .container-fluid .row .women h6 {
-    font-style: italic;
-    font-size: 24px;
-    font-family: "Playfair Display", serif;
-    color: #CCA471;
-  }
-  #Banner .container-fluid .row .women a {
-    text-decoration: none;
-    font-size: 30px;
-    font-family: "Playfair Display", serif;
-    color: white;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
-  #Banner .container-fluid .row .women p {
-    font-size: 20px;
-    font-family: "Source Sans Pro", sans-serif;
-    color: #AAAAAA;
-  }
+  position: relative !important;
+  z-index: 1;
+  cursor: pointer;
+}
+#Banner .container-fluid .row .men:hover:before {
+  opacity: 0.7;
+}
+#Banner .container-fluid .row .men:before {
+  content: "";
+  background-color: #091338;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: -1;
+  transition: 0.5s;
+  opacity: 0;
+}
+#Banner .container-fluid .row .men h6 {
+  font-style: italic;
+  font-size: 24px;
+  font-family: "Playfair Display", serif;
+  color: #CCA471;
+}
+#Banner .container-fluid .row .men a {
+  text-decoration: none;
+  font-size: 30px ;
+  font-family: "Playfair Display", serif;
+  color: white;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+#Banner .container-fluid .row .men p {
+  font-size: 20px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #AAAAAA;
+}
+#Banner .container-fluid .row .women {
+  /* background-image: url(/assets/Images/promo2_c5444c07-50e6-4452-90ed-99ca49a106fc.webp); */
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 40px 20px;
+  border: 6px solid #34353a;
+  z-index: 1;
+  position: relative;
+  cursor: pointer;
+}
+#Banner .container-fluid .row .women:hover:before {
+  opacity: 0.7;
+}
+#Banner .container-fluid .row .women:before {
+  content: "";
+  background-color: #091338;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: -1;
+  transition: 0.5s;
+  opacity: 0;
+}
+#Banner .container-fluid .row .women h6 {
+  font-style: italic;
+  font-size: 24px;
+  font-family: "Playfair Display", serif;
+  color: #CCA471;
+}
+#Banner .container-fluid .row .women a {
+  text-decoration: none;
+  font-size: 30px;
+  font-family: "Playfair Display", serif;
+  color: white;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+#Banner .container-fluid .row .women p {
+  font-size: 20px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #AAAAAA;
+}
+#Banner .container-fluid .row .couple {
+  /* background-image: url(/assets/Images/promo3_e10c824c-b077-4e67-be09-c11067066cf5.webp); */
+  background-size: cover;
+  background-position: center;
+  text-align: end;
+  padding: 40px 20px;
+  border: 6px solid #34353a;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+#Banner .container-fluid .row .couple:hover::before {
+  opacity: 0.7;
+}
+#Banner .container-fluid .row .couple::before {
+  content: "";
+  background-color: #091338;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: -1;
+  transition: 0.5s;
+  opacity: 0;
+}
+#Banner .container-fluid .row .couple h6 {
+  font-style: italic;
+  font-size: 24px;
+  font-family: "Playfair Display", serif;
+  color: #CCA471;
+}
+#Banner .container-fluid .row .couple a {
+  text-decoration: none;
+  font-size: 30px;
+  font-family: "Playfair Display", serif;
+  color: white;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+#Banner .container-fluid .row .couple p {
+  font-size: 20px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #AAAAAA;
+}
+
+@media (max-width: 992px) {
+  #Banner .container-fluid .row .men,
+  #Banner .container-fluid .row .women,
   #Banner .container-fluid .row .couple {
-    /* background-image: url(/assets/Images/promo3_e10c824c-b077-4e67-be09-c11067066cf5.webp); */
-    background-size: cover;
-    background-position: center;
-    text-align: end;
-    padding: 40px 20px;
-    border: 6px solid #34353a;
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
-  }
-  #Banner .container-fluid .row .couple:hover::before {
-    opacity: 0.7;
-  }
-  #Banner .container-fluid .row .couple::before {
-    content: "";
-    background-color: #091338;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    z-index: -1;
-    transition: 0.5s;
-    opacity: 0;
-  }
-  #Banner .container-fluid .row .couple h6 {
-    font-style: italic;
-    font-size: 24px;
-    font-family: "Playfair Display", serif;
-    color: #CCA471;
-  }
-  #Banner .container-fluid .row .couple a {
-    text-decoration: none;
-    font-size: 30px;
-    font-family: "Playfair Display", serif;
-    color: white;
-    display: inline-block;
     margin-bottom: 20px;
   }
-  #Banner .container-fluid .row .couple p {
-    font-size: 20px;
-    font-family: "Source Sans Pro", sans-serif;
-    color: #AAAAAA;
-  }
-  
+}

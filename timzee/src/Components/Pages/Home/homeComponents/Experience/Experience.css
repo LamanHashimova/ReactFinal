@@ -42,3 +42,16 @@
     padding: 20px;
     transition: 0.5s;
   }
+  @media (max-width: 992px) {
+    #Experience .container .experience-all h2{
+      font-size: 35px;
+    }
+    /* #Experience .container .experience-all .experienceSlider {
+     display: flex;
+     flex-direction: column;
+    }
+    #Experience .container .experience-all .experienceSlider .single-ex {
+      width: 50%;
+    } */
+  }
+  

@@ -24,7 +24,7 @@ function Team() {
             <p>When we take care of our employees, knowing very well, they will feel the same towards the customers and would do everything in their power to take care of them!</p>
             <div className="row">
                 {team.map(team=>(
-                    <div className="col-lg-3">
+                    <div className="col-lg-3 col-md-6 col-sm-12">
                     <div className="singleTeam">
                         <div className="Profile">
                         <img src={`data:image/jpeg;base64,${team.image}`} alt="" />

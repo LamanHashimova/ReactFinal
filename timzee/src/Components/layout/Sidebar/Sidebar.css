@@ -1,0 +1,137 @@
+#basket-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 111;
+    width: 0%;
+    height: 100%;
+    transition: 0.5s;
+    background-color: #030D1D;
+  }
+  #basket-sidebar .headerside {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #basket-sidebar .headerside h4 {
+    font-size: 25px;
+    font-family: "Playfair Display", serif;
+    color: #CCA471;
+  }
+  #basket-sidebar .headerside .close i {
+    transition: 0.5s;
+    color: #fff;
+    background-color: #343535;
+    padding: 5px 8px;
+  }
+  #basket-sidebar .headerside .close i:hover {
+    background-color: #CCA471;
+    cursor: pointer;
+  }
+  #basket-sidebar .SingleSideCart {
+    display: flex;
+    padding: 20px 0;
+  }
+  #basket-sidebar .SingleSideCart .SideImg {
+    width: 50%;
+  }
+  #basket-sidebar .SingleSideCart .SideImg img {
+    width: 100%;
+  }
+  #basket-sidebar .SingleSideCart .SideContent a {
+    text-decoration: none;
+  }
+  #basket-sidebar .SingleSideCart .SideContent a h6 {
+    color: #AAAAAA;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  #basket-sidebar .SingleSideCart .SideContent p {
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+  #basket-sidebar .SingleSideCart .SideContent span {
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  #basket-sidebar .SingleSideCart .SideContent .quantity {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  #basket-sidebar .SingleSideCart .SideContent .quantity .qty {
+    font-size: 25px;
+    font-family: "Source Sans Pro", sans-serif;
+    outline: none;
+    border: 1px solid #212a38;
+    padding: 0 20px;
+    background: rgba(0, 0, 0, 0);
+    color: #aaaaaa;
+  }
+  #basket-sidebar .SingleSideCart .SideContent .quantity .qtytext {
+    font-size: 22px;
+    font-family: "Source Sans Pro", sans-serif;
+    outline: none;
+    padding-left: 15px;
+    border: 1px solid #212a38;
+    width: 18%;
+    background: rgba(0, 0, 0, 0);
+    color: #aaaaaa;
+  }
+  #basket-sidebar hr {
+    width: 90%;
+    margin: auto;
+    color: wheat;
+  }
+  #basket-sidebar .Total {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #basket-sidebar .Total .subtotal {
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  #basket-sidebar .GotoCheckout {
+    padding: 20px;
+  }
+  #basket-sidebar .GotoCheckout a {
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #ffffff;
+    background-color: #343435;
+    padding: 20px 40px;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    margin-bottom: 20px;
+  }
+  #basket-sidebar .GotoCheckout a::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: #CCA471;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -10;
+    transition: 0.4s;
+  }
+  #basket-sidebar .GotoCheckout a:hover::before {
+    height: 100%;
+  }

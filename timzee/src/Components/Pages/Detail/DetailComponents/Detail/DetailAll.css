@@ -124,7 +124,7 @@
   color: white;
   font-size: 20px;
   background-color: #343535;
-  padding: 15PX;
+  padding: 18px;
   transition: 0.5s;
 }
 #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .Smallside a i:hover {
@@ -182,6 +182,18 @@
   font-weight: 600;
   font-family: "Source Sans Pro", sans-serif;
 }
+#Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice .allprc{
+display: flex;
+align-items: center;
+
+gap: 20px;
+}
+#Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice .oldprc{
+  color: #AAAAAA;
+  text-decoration: line-through;
+  font-size: 18px;
+  font-family: "Source Sans Pro", sans-serif;  
+}
 #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-content .pricee .oldprc {
   color: #AAAAAA;
   text-decoration: line-through;
@@ -211,16 +223,17 @@
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice {
   display: flex;
+  align-items: center;
   gap: 20%;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice .ttl {
-  font-size: 23px;
+  font-size: 18px;
   color: #AAAAAA;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice span {
-  font-size: 23px;
+  font-size: 18px;
   color: #CCA471;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
@@ -232,7 +245,7 @@
   margin: 20px 0;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize p {
-  font-size: 23px;
+  font-size: 18px;
   color: #AAAAAA;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
@@ -267,7 +280,7 @@
   gap: 20%;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor p {
-  font-size: 23px;
+  font-size: 18px;
   color: #AAAAAA;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
@@ -316,7 +329,7 @@
   margin: 20px 0;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial p {
-  font-size: 23px;
+  font-size: 18px;
   color: #AAAAAA;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
@@ -351,7 +364,7 @@
   gap: 20%;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductType .ttl {
-  font-size: 23px;
+  font-size: 18px;
   color: #AAAAAA;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
@@ -368,13 +381,14 @@
   margin: 20px 0;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity p {
-  font-size: 23px;
+  font-size: 18px;
   color: #AAAAAA;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity .Quantities {
   display: flex;
+  align-items: center;
   margin-bottom: 20px;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity .Quantities .qty {
@@ -385,14 +399,16 @@
   padding: 0 20px;
   background: rgba(0, 0, 0, 0);
   color: #aaaaaa;
+  text-decoration: none;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity .Quantities .qtytext {
-  font-size: 25px;
+  font-size: 18px;
   font-family: "Source Sans Pro", sans-serif;
   outline: none;
-  padding-left: 15px;
+  text-decoration: none;
+  padding: 5px 18px;
   border: 1px solid #212a38;
-  width: 12%;
+  width: 80%;
   background: rgba(0, 0, 0, 0);
   color: #aaaaaa;
 }
@@ -401,20 +417,20 @@
   gap: 10%;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductAvailibility .ttl {
-  font-size: 23px;
+  font-size: 18px;
   color: #AAAAAA;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductAvailibility .stock {
-  font-size: 23px;
-  color: green;
+  font-size: 18px;
+  color: #CCA471  ;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   text-align: start;
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductAvailibility .sold {
-  font-size: 23px;
+  font-size: 18px;
   color: red;
   font-family: "Source Sans Pro", sans-serif;
   display: none;
@@ -428,11 +444,11 @@
   outline: none;
   border: none;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 15px;
   font-family: "Source Sans Pro", sans-serif;
   color: #ffffff;
   background-color: #343435;
-  padding: 15px 40px;
+  padding: 18px 40px;
   position: relative;
   z-index: 2;
 }
@@ -485,7 +501,7 @@
   font-family: "Source Sans Pro", sans-serif;
   color: #ffffff;
   background-color: #343435;
-  padding: 15px 40px;
+  padding: 18px 40px;
   z-index: 2;
   position: relative;
 }
@@ -506,7 +522,7 @@
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu .tab .tablinks {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 15px;
   font-family: "Source Sans Pro", sans-serif;
   color: #ffffff;
   border: none;
@@ -669,4 +685,31 @@
 }
 #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu .active-tab {
   display: block;
+}
+@media (max-width: 992px) {
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-header .accordion-button {
+
+    font-size: 15px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-collapse .card-body ul li {
+
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail{
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+ 
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .Smallside a i {
+    font-size: 9px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .sale span {
+    font-size: 12px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .save span {
+    font-size: 12px;
+  }
 }

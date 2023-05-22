@@ -1,0 +1,71 @@
+#BlogInfo {
+    background-color: #030D1D;
+    padding-top: 80px;
+  }
+  #BlogInfo .BlogDetailImg {
+    width: 80%;
+    margin: auto;
+  }
+  #BlogInfo .BlogDetailImg img {
+    width: 100%;
+  }
+  #BlogInfo .BlogDetailInfo {
+    padding: 30px 0;
+  }
+  #BlogInfo .BlogDetailInfo h3 {
+    font-size: 33px;
+    font-family: "Playfair Display", serif;
+    color: #CCA471;
+  }
+  #BlogInfo .BlogDetailInfo .smallInfo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 40px 0;
+  }
+  #BlogInfo .BlogDetailInfo .smallInfo .singleSmallInfo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  #BlogInfo .BlogDetailInfo .smallInfo .singleSmallInfo i {
+    font-size: 18px;
+    color: #CCA471;
+  }
+  #BlogInfo .BlogDetailInfo .smallInfo .singleSmallInfo span {
+    font-size: 18px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #AAAAAA;
+  }
+  #BlogInfo .BlogDetailInfo .Desc p {
+    font-size: 18px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #AAAAAA;
+    line-height: 40px;
+  }
+  #BlogInfo .BlogDetailInfo .share {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+  #BlogInfo .BlogDetailInfo .share h6 {
+    font-size: 18px;
+    font-family: "Playfair Display", serif;
+    color: #CCA471;
+  }
+  #BlogInfo .BlogDetailInfo .share .social {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  #BlogInfo .BlogDetailInfo .share .social i {
+    font-size: 15px;
+    color: #AAAAAA;
+    transition: 0.3s;
+  }
+  #BlogInfo .BlogDetailInfo .share .social i:hover {
+    color: #CCA471;
+    cursor: pointer;
+  }

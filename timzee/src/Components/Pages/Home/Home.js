@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useEffect } from 'react';
 import SliderMain from './homeComponents/SliderMain/SliderMain.js'
 import Banner from './homeComponents/Banner/Banner.js'
 import RomanNumeral from './homeComponents/RomanNumeral/RomanNumeral.js'
@@ -11,6 +11,17 @@ import WordsSlider from './homeComponents/WordsSlider/WordsSlider.js';
 import Product from './homeComponents/Product/Product.js'
 
 function Home() {
+  const handleScroll = () => {
+    const currentPosition = window.pageYOffset;
+    window.scrollTo(0, currentPosition);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <div>
       <SliderMain />

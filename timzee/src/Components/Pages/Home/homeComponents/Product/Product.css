@@ -40,24 +40,24 @@
       width: 100%;
     }
   }
-  #Products .container .tabmenu .tab {
+  #Products .tabmenu .tab {
     overflow: hidden;
     justify-content: center;
     display: flex;
     gap: 30px;
   }
-  #Products .container .tabmenu .tab .tablinks {
+  .tablinks {
     display: inline-block;
     position: relative;
     padding: 30px 0;
-    font-size: 24px;
+    font-size: 20px;
     font-family: "Source Sans Pro", sans-serif;
     color: #AAAAAA;
     background: transparent;
     border: none;
     transition: 0.3s;
   }
-  #Products .container .tabmenu .tab .tablinks::after {
+ .tablinks::after {
     content: "";
     display: block;
     margin: auto;
@@ -68,87 +68,40 @@
     background: transparent;
     transition: width 0.5s ease, background-color 0.5s ease;
   }
-  #Products .container .tabmenu .tab .tablinks:focus {
+  .tablinks:focus {
     color: #CCA471;
   }
-  #Products .container .tabmenu .tab .tablinks:focus::after {
+.tablinks:focus::after {
     width: 100%;
     background: #CCA471;
   }
-  #Products .container .tabmenu .tabcontent {
+  #Products .container-fluid .tabmenu .tabcontent {
     display: none;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel {
-    position: relative;
+  #Products .container-fluid .tabmenu .tabcontent .row {
+    margin: 0 3.5%;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    z-index: -1;
-    width: 110%;
-    left: -60px;
-  }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-nav .owl-next {
-    position: relative;
-  }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-nav .owl-next i {
-    background-color: #343435;
-    font-size: 20px;
-    padding: 20px;
-    color: #fff;
-  }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-nav .owl-next::before {
-    content: "";
-    width: 100%;
-    height: 4px;
-    background: #CCA471;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-  }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-nav .owl-prev {
-    position: relative;
-  }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-nav .owl-prev i {
-    background-color: #343435;
-    font-size: 20px;
-    padding: 20px;
-    color: #fff;
-  }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-nav .owl-prev::before {
-    content: "";
-    width: 100%;
-    height: 4px;
-    background: #CCA471;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-  }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single {
+  #Products  .product-single {
     width: 90%;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single:hover .pro-content h4 a {
+  #Products  .product-single:hover .pro-content h4 a {
     color: #CCA471;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img {
+  #Products  .product-single .pro-img {
     width: 100%;
     position: relative;
     z-index: 1;
     margin-bottom: 20px;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img:hover .Smallside {
+
+  #Products .product-single .pro-img:hover .Smallside {
     opacity: 1;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img:hover .overlay {
+  #Products  .product-single .pro-img:hover .overlay {
     height: 100% !important;
     background-color: #505155;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img .Smallside {
+  #Products  .product-single .pro-img .Smallside {
     display: flex;
     flex-direction: column !important;
     position: absolute;
@@ -158,18 +111,31 @@
     opacity: 0;
     transition: 0.5s;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img .Smallside a i {
+  #Products  .product-single .pro-img .Smallside button{
     color: white;
-    font-size: 20px;
+    font-size: 12px;
+    background-color: #343535;
+    padding: 15PX;
+    transition: 0.5s;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+  }
+  #Products  .product-single .pro-img .Smallside button:hover{
+    background-color: #CCA471;
+  }
+  #Products  .product-single .pro-img .Smallside a i {
+    color: white;
+    font-size: 12px;
     background-color: #343535;
     padding: 15PX;
     transition: 0.5s;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img .Smallside a i:hover {
+  #Products .product-single .pro-img .Smallside a i:hover {
     background-color: #CCA471;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img .sale span {
-    font-size: 16px;
+  #Products  .product-single .pro-img .sale span {
+    font-size: 12px;
     font-family: "Source Sans Pro", sans-serif;
     color: white;
     background-color: #343435;
@@ -178,8 +144,8 @@
     left: 10px;
     top: 10px;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img .save span {
-    font-size: 16px;
+  #Products  .product-single .pro-img .save span {
+    font-size: 12px;
     font-family: "Source Sans Pro", sans-serif;
     color: white;
     background-color: #343435;
@@ -188,7 +154,7 @@
     right: 10px;
     top: 10px;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img a .overlay {
+  #Products  .product-single .pro-img a .overlay {
     position: absolute;
     background-color: #34353a;
     z-index: -1;
@@ -196,52 +162,51 @@
     width: 100%;
     transition: 0.5s;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-img a img {
+  #Products  .product-single .pro-img a img {
     width: 100%;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content {
+  #Products .product-single .pro-content {
     text-align: center;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content h4 a {
+  #Products  .pro-content h4 a {
     text-decoration: none;
     font-family: "Playfair Display", serif;
     color: #fff;
-    font-size: 25px;
-    transition: 0.3s;
+    font-size: 18px;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content .pricee {
+  #Products .product-single .pro-content .pricee {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content .pricee .prc {
+  #Products  .product-single .pro-content .pricee .prc {
     color: #AAAAAA;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
     font-family: "Source Sans Pro", sans-serif;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content .pricee .oldprc {
+  #Products  .product-single .pro-content .pricee .oldprc {
     color: #AAAAAA;
     text-decoration: line-through;
-    font-size: 22px;
+    font-size: 20px;
     font-family: "Source Sans Pro", sans-serif;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content .range {
+  #Products  .product-single .pro-content .range {
     margin: 10px 0;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content .range i {
+  #Products .pro-content .range i {
     color: #fcc43e;
     font-size: 18px;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content .title {
+  #Products  .product-single .pro-content .title {
     font-size: 20px;
     color: #AAAAAA;
     font-family: "Source Sans Pro", sans-serif;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content button {
+  #Products .product-single .pro-content button {
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 12px;
     border: none;
     font-family: "Source Sans Pro", sans-serif;
     color: #ffffff;
@@ -251,13 +216,13 @@
     position: relative;
     z-index: 2;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content button:hover::before {
+  #Products  .product-single .pro-content button:hover::before {
     height: 100%;
   }
-  #Products .container .tabmenu .tabcontent .owl-carousel .owl-item .product-single .pro-content button::before {
+  #Products  .product-single .pro-content button::before {
     content: "";
     width: 100%;
-    height: 4px;
+    height: 2px;
     background: #CCA471;
     position: absolute;
     bottom: 0;
@@ -266,7 +231,4 @@
     z-index: -10;
     transition: 0.5s;
   }
-  #Products .container .tabmenu .active-tab {
-    display: block;
-  }
-  
+ 

@@ -3,7 +3,9 @@ import Swal from 'sweetalert2';
 import './CheckoutAll.css'
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Product from '../../../Home/homeComponents/Product/Product';
 function CheckoutAll() {
     const [user, setUser] = useState();
     const [userName, setUserName] = useState();
@@ -87,9 +89,9 @@ debugger
     const navigate = useNavigate();
 
     let token = localStorage.getItem('token');
+    const subtotal = baskets?.reduce((sum,item)=>sum + (item.count * item.price),0) ?? 0;
 
-
-
+ 
     function parseJwt(token) {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -145,7 +147,8 @@ debugger
                     <div className="col-lg-6">
                         <div className="allRight">
                             <div className="Logo">
-                                <img src="assets/Images/watch_x320.png" alt="" />
+                            <img style={{color:"black"}} src={require('../../../../../Assets/Images/watch_x320.avif')} alt=""/>
+                            
 
                             </div>
                             <div className="BreadCrump">
@@ -194,8 +197,8 @@ debugger
                                             <Form.Control type="text" onChange={(e) => setComment(e.target.value)} placeholder="comment" />
                                         </div>
                                         <div className="Continue">
-                                            <a href="#">  <span>{'<'}</span>  Return to cart</a>
-                                            <Button type='submit'>Continue to shipping</Button>
+                                            <Link to={"/basket"}> <span>{'<'}</span>  Return to cart </Link>
+                                            <button className='btn  btn-primary' type='submit'>Continue to shipping</button>
                                         </div>
                                     </div>
                                 </Form>
@@ -209,28 +212,23 @@ debugger
                                 
                                 <div className="singleCart">
                                 <div className="imgCart">
-                                    <img src="/assets/Images/Watch4_64x64.webp" alt="" />
-                                    <span>4</span>
+                                <img src={`data:image/jpeg;base64,${items?.mainimage}`} alt="" />
+                                    <span>{items?.count}</span>
                                 </div>
                                 <div className="ContentImg">
                                     <div className="ForInfo">
                                         <p className="mb-0">{items?.title}</p>
-                                        <span>720mm / Black / Steel</span>
+                                        <span>{items?.size} / {items?.color} / {items?.material}</span>
                                     </div>
                                     <div className="ForPrice">
-                                        <span>$1,400.00</span>
+                                        <span>${items?.price*items?.count} </span>
                                     </div>
                                 </div>
+                                
                             </div>
+                            
                                 )}
                          
-                            <div className="Subtotal">
-                                <span>SubTotal</span>
-
-
-                                <span className="prc" >$1,400.00</span>
-
-                            </div>
                             <div className="ship">
                                 <span>Shipping</span>
 
@@ -242,7 +240,7 @@ debugger
                                 <span>Total</span>
                                 <div className="fullprice">
                                     <span className="prcvalue">USD</span>
-                                    <span >$1,400.00</span>
+                                    <span >${subtotal}</span>
                                 </div>
                             </div>
                         </div>

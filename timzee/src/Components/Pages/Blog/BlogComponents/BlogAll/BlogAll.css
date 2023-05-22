@@ -1,0 +1,167 @@
+#Blog {
+    background-color: #030d1d;
+    padding: 80px 0;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Articles h5 {
+    color: #ffffff;
+    text-align: left;
+    cursor: -webkit-grab;
+    cursor: grab;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    position: relative;
+    margin-bottom: 30PX;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Articles h5::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    bottom: -10px;
+    z-index: 11;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Articles .SingleArticle {
+    display: flex;
+    gap: 20px;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Articles .SingleArticle:hover .ArticleInfo a {
+    color: #CCA471;
+  }
+
+  #Blog .container .row .col-lg-3 .Leftsidebar .Articles .SingleArticle .ArticleImage img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 70%;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Articles .SingleArticle .ArticleInfo a {
+    transition: 0.3s;
+    text-decoration: none;
+    color: #AAAAAA;
+    font-size: 18px;
+    font-family: "Playfair Display", serif;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Articles .SingleArticle .ArticleInfo p {
+    color: #AAAAAA;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Tags h5 {
+    color: #ffffff;
+    text-align: left;
+    cursor: -webkit-grab;
+    cursor: grab;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Tags h5::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    bottom: -10px;
+    z-index: 11;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Tags ul {
+    padding: 0;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Tags ul li {
+    list-style: none;
+    line-height: 40px;
+    font-size: 20px;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Tags ul li:hover a {
+    color: #CCA471;
+  }
+  #Blog .container .row .col-lg-3 .Leftsidebar .Tags ul li a {
+    text-decoration: none;
+    color: #AAAAAA;
+  
+    transition: 0.3s;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent {
+    display: grid;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent:hover .RightInfo .title {
+    color: #CCA471;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightImage{
+    width: 100%;
+    margin: auto;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightImage img {
+    width: 100%;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo p {
+    display: inline-block;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo p i {
+    color: #AAAAAA;
+    font-size: 20px;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo p span {
+    color: #AAAAAA;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo .title {
+    text-decoration: none;
+    font-size: 28px;
+    font-family: "Playfair Display", serif;
+    color: #fff;
+    display: inline-block;
+    transition: 0.3s;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo .readmore {
+    text-decoration: none;
+    
+    margin: auto;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #ffffff;
+    background-color: #343435;
+    padding: 20px 60px;
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo .readmore:hover::before {
+    height: 100%;
+  }
+  #Blog .container .row .col-lg-9 .RightSidebar .RightContent .row .col-lg-4 .SingleRightContent .RightInfo .readmore::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -10;
+    transition: 0.5s;
+  }
+  .MuiPagination-ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .MuiButtonBase-root {
+    color: white !important;
+  }
