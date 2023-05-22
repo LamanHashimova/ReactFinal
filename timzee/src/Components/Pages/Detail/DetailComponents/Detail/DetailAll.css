@@ -1,0 +1,795 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  #Header {
+    background-color: #0e1d55;
+    padding: 20px;
+  }
+  #Header .container-fluid .row {
+    align-items: center;
+  }
+  #Header .container-fluid .row nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  #Header .container-fluid .row nav a {
+    text-decoration: none;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  #Header .container-fluid .row .site-header {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+  }
+  #Header .container-fluid .row .site-header a {
+    text-decoration: none;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 20px;
+  }
+  
+  #BreadCrump {
+    /* background: url(/assets/Images/slider__3_2000x_1.webp) center top no-repeat fixed; */
+    background-size: cover;
+    padding: 100px;
+    position: relative;
+    z-index: 111;
+  }
+  #BreadCrump::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: #ffffff;
+    opacity: 0.8;
+  }
+  #BreadCrump .container .BreadCrump-all {
+    text-align: center;
+  }
+  #BreadCrump .container .BreadCrump-all h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #030d1d;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 40px;
+  }
+  #BreadCrump .container .BreadCrump-all a {
+    text-decoration: none;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    color: #000;
+  }
+  #BreadCrump .container .BreadCrump-all span {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 22px;
+    color: #000;
+  }
+  
+  #Detail {
+    background-color: #030d1d;
+    padding: 80px 0;
+  }
+  #Detail .container-fluid .row {
+    margin: 0 3.5%;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category h5 {
+    color: #ffffff;
+    text-align: left;
+    cursor: -webkit-grab;
+    cursor: grab;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    position: relative;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category h5::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    bottom: -10px;
+    z-index: 11;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item {
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-header .accordion-button {
+    background-color: transparent;
+    color: #AAAAAA;
+    font-size: 22px;
+    box-shadow: none;
+    padding-left: 0;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-header .accordion-button:focus {
+    border: none;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-header .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
+    transform: scale(0.7) !important;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed)::after {
+    background-color: transparent;
+    color: #AAAAAA;
+    font-size: 20px;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-collapse .card-body ul {
+    margin-left: 40px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-collapse .card-body ul li {
+    color: #AAAAAA;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: "Source Sans Pro", sans-serif;
+    line-height: 60px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Category .accordion .accordion-item .accordion-collapse .card-body ul li a {
+    color: #AAAAAA;
+    text-decoration: none;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals h5 {
+    color: #ffffff;
+    text-align: left;
+    cursor: -webkit-grab;
+    cursor: grab;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    position: relative;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals h5::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    bottom: -10px;
+    z-index: 11;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single {
+    margin-top: 30px;
+    width: 100%;
+    width: 90%;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single:hover .pro-content h4 a {
+    color: #CCA471;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img:hover .Smallside {
+    opacity: 1;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img:hover .overlay {
+    height: 100% !important;
+    background-color: #505155;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .Smallside {
+    display: flex;
+    flex-direction: column !important;
+    position: absolute;
+    gap: 10px;
+    right: 10px;
+    top: 20%;
+    opacity: 0;
+    transition: 0.5s;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .Smallside a i {
+    color: white;
+    font-size: 20px;
+    background-color: #343535;
+    padding: 15PX;
+    transition: 0.5s;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .Smallside a i:hover {
+    background-color: #CCA471;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .sale span {
+    font-size: 16px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+    background-color: #343435;
+    padding: 5px 10px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img .save span {
+    font-size: 16px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+    background-color: #343435;
+    padding: 5px 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img a .overlay {
+    position: absolute;
+    background-color: #34353a;
+    z-index: -1;
+    height: 68%;
+    width: 100%;
+    transition: 0.5s;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-img a img {
+    width: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-content {
+    text-align: center;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-content h4 a {
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
+    color: #fff;
+    font-size: 25px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-content .pricee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-content .pricee .prc {
+    color: #AAAAAA;
+    font-size: 28px;
+    font-weight: 600;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Detail .container-fluid .row .col-lg-3 .LeftDetail .Arrivals .ArrivalSlider .product-single .pro-content .pricee .oldprc {
+    color: #AAAAAA;
+    text-decoration: line-through;
+    font-size: 22px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainImgs .SingleMainImg img {
+    width: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainImgs .SliderMainImgs {
+    width: 100%;
+    display: flex;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainImgs .SliderMainImgs .SinglesliderImg {
+    width: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainImgs .SliderMainImgs .SinglesliderImg img {
+    width: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo h2 {
+    color: #CCA471;
+    cursor: -webkit-grab;
+    cursor: grab;
+    font-family: "Playfair Display", serif;
+    font-size: 50px;
+    margin-bottom: 30px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice {
+    display: flex;
+    gap: 20%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice .ttl {
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductPrice span {
+    font-size: 23px;
+    color: #CCA471;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    text-align: start;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize {
+    display: flex;
+    gap: 20%;
+    margin: 20px 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize p {
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize .Sizes {
+    display: flex;
+    gap: 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize .Sizes .singlesize {
+    position: relative;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize .Sizes .singlesize input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize .Sizes .singlesize input:checked + label {
+    border-color: #CCA471;
+    color: #CCA471;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductSize .Sizes .singlesize label {
+    color: #AAAAAA;
+    min-width: auto;
+    font-size: 20px;
+    padding: 0px 10px;
+    border: 1px solid #212a38;
+    padding: 5px 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor {
+    display: flex;
+    gap: 20%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor p {
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor .Colors {
+    display: flex;
+    gap: 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor .Colors .singleColor {
+    margin-left: 5px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor .Colors .singleColor input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor .Colors .singleColor input:checked + label i {
+    box-shadow: 0 0 5px 5px yellow;
+    padding: 10px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor .Colors .singleColor label {
+    position: absolute;
+    width: 20%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductColor .Colors .singleColor label i {
+    height: 40px;
+    width: 40px;
+    background-color: palevioletred;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    background-position: center;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial {
+    display: flex;
+    gap: 12%;
+    margin: 20px 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial p {
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial .Materials {
+    display: flex;
+    gap: 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial .Materials .singlematerial {
+    position: relative;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial .Materials .singlematerial input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial .Materials .singlematerial input:checked + label {
+    border-color: #CCA471;
+    color: #CCA471;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductMaterial .Materials .singlematerial label {
+    color: #AAAAAA;
+    min-width: auto;
+    font-size: 20px;
+    padding: 0px 10px;
+    border: 1px solid #212a38;
+    padding: 5px 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductType {
+    display: flex;
+    gap: 20%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductType .ttl {
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductType span {
+    font-size: 22px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    text-align: start;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity {
+    display: flex;
+    gap: 12%;
+    margin: 20px 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity p {
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity .Quantities {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity .Quantities .qty {
+    font-size: 25px;
+    font-family: "Source Sans Pro", sans-serif;
+    outline: none;
+    border: 1px solid #212a38;
+    padding: 0 20px;
+    background: rgba(0, 0, 0, 0);
+    color: #aaaaaa;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductQuantity .Quantities .qtytext {
+    font-size: 25px;
+    font-family: "Source Sans Pro", sans-serif;
+    outline: none;
+    padding-left: 15px;
+    border: 1px solid #212a38;
+    width: 12%;
+    background: rgba(0, 0, 0, 0);
+    color: #aaaaaa;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductAvailibility {
+    display: flex;
+    gap: 10%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductAvailibility .ttl {
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductAvailibility .stock {
+    font-size: 23px;
+    color: green;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    text-align: start;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .ProductAvailibility .sold {
+    font-size: 23px;
+    color: red;
+    font-family: "Source Sans Pro", sans-serif;
+    display: none;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .buy {
+    margin: 20px 0;
+    display: flex;
+    gap: 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .buy button {
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #ffffff;
+    background-color: #343435;
+    padding: 15px 40px;
+    position: relative;
+    z-index: 2;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .buy button:hover::before {
+    height: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .buy button::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -10;
+    transition: 0.5s;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .buy a {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #ffffff;
+    background-color: #343435;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .buy a:hover::before {
+    height: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .buy a::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transition: 0.5s;
+    z-index: -10;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .wishlist button {
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #ffffff;
+    background-color: #343435;
+    padding: 15px 40px;
+    z-index: 2;
+    position: relative;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .wishlist button:hover::before {
+    height: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .row .col-lg-6 .MainInfo .wishlist button::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -10;
+    transition: 0.5s;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu .tab .tablinks {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #ffffff;
+    border: none;
+    background-color: #343435;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 2;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu .tab .tablinks:hover::before {
+    height: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu .tab .tablinks::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transition: 0.5s;
+    z-index: -10;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu .tabcontent {
+    display: none;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #DESCRIPTION {
+    border: 1px solid #212a38;
+    padding: 22px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #DESCRIPTION p {
+    color: #AAAAAA;
+    font-size: 21px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #DESCRIPTION h4 {
+    color: #CCA471;
+    font-size: 32px;
+    font-family: "Playfair Display", serif;
+    margin: 20px 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #DESCRIPTION ul {
+    padding: 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #DESCRIPTION ul li {
+    list-style: none;
+    line-height: 40px;
+    color: #AAAAAA;
+    font-size: 22px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #DESCRIPTION blockquote {
+    color: #AAAAAA;
+    font-size: 22px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-style: italic;
+    line-height: 40px;
+    padding-left: 20px;
+    border-left: 2px solid currentColor;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS {
+    border: 1px solid #212a38;
+    padding: 22px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview h2 {
+    color: #CCA471;
+    font-size: 28px;
+    font-family: "Playfair Display", serif;
+    margin: 20px 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview .based {
+    border-top: 1px solid #212a38;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview .based .stars {
+    display: flex;
+    align-items: center;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview .based .stars i {
+    color: #fcc43e;
+    font-size: 30px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview .based .stars span {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #AAAAAA;
+    font-size: 22px;
+    margin-left: 5px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview .based a {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #ffffff;
+    border: none;
+    background-color: #343435;
+    padding: 20px 50px;
+    position: relative;
+    z-index: 2;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview .based a:hover::before {
+    height: 100%;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .WriteReview .based a::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: #CCA471;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transition: 0.5s;
+    z-index: -10;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview {
+    border-top: 1px solid #212a38;
+    padding-top: 30px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview .Stars i {
+    color: #fcc43e;
+    font-size: 20px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview h3 {
+    color: #CCA471;
+    font-size: 22px;
+    font-family: "Playfair Display", serif;
+    margin: 20px 0;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview span {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #AAAAAA;
+    font-size: 18px;
+    font-style: italic;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview span strong {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #AAAAAA;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 700;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview p {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #AAAAAA;
+    font-size: 18px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview .by {
+    text-align: end;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu #REVIEWS .ReadReview .by a {
+    text-decoration: none;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #AAAAAA;
+    font-size: 18px;
+  }
+  #Detail .container-fluid .row .col-lg-9 .DetailAll .Review .tabmenu .active-tab {
+    display: block;
+  }
+  
+  #Footer {
+    /* background-image: url(/assets/Images/footer-img_052c2e02-57e9-473b-a7a4-2668c5104fbd.jpg); */
+    background-position: center;
+    background-size: cover;
+    padding: 100px;
+    position: relative;
+    z-index: 1;
+  }
+  #Footer::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.7;
+  }
+  #Footer .container .row .singleFooterArea {
+    text-align: left;
+  }
+  #Footer .container .row .singleFooterArea h5 {
+    font-size: 28px;
+    font-family: "Playfair Display", serif;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  #Footer .container .row .singleFooterArea ul {
+    padding: 0;
+  }
+  #Footer .container .row .singleFooterArea ul li {
+    line-height: 45px;
+    list-style: none;
+    text-decoration: none;
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  #Footer .container .row .singleFooterArea ul li i {
+    margin-right: 10px;
+  }
+  #Footer .container .row .singleFooterArea ul li a {
+    text-decoration: none;
+    font-size: 23px;
+    color: #AAAAAA;
+    font-family: "Source Sans Pro", sans-serif;
+  }/*# sourceMappingURL=detail.css.map */

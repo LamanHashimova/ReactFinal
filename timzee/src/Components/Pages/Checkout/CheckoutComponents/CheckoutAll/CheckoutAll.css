@@ -1,0 +1,250 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  #Checkout {
+    padding: 50px 0;
+  }
+  #Checkout .container .col-lg-6 .allRight {
+    padding: 0 30px;
+  }
+  #Checkout .container .col-lg-6 .allRight .Logo {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 40%;
+  }
+  #Checkout .container .col-lg-6 .allRight .Logo img {
+    width: 100%;
+  }
+  #Checkout .container .col-lg-6 .allRight .BreadCrump {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+  }
+  #Checkout .container .col-lg-6 .allRight .BreadCrump .active {
+    color: #CCA471;
+    font-size: 12px;
+  }
+  #Checkout .container .col-lg-6 .allRight .BreadCrump .information {
+    color: #000000;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  #Checkout .container .col-lg-6 .allRight .BreadCrump a {
+    text-decoration: none;
+    color: #707070;
+    font-size: 12px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .ContactData .logCon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .ContactData .logCon h2 {
+    color: #000000;
+    font-size: 18px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .ContactData .logCon p {
+    color: #000000;
+    font-size: 14px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .ContactData .logCon p a {
+    color: #CCA471;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .ContactData .conInput input {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(170, 170, 170, 0.6666666667);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .ContactData .conInput input:focus {
+    border: 2px solid #CCA471;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm {
+    padding: 20px 0;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm h2 {
+    color: #000000;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Country {
+    margin-bottom: 20px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Country select {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(170, 170, 170, 0.6666666667);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .ForName {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .ForName input {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(170, 170, 170, 0.6666666667);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .ForName input:focus {
+    border: 2px solid #CCA471;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Address {
+    margin-bottom: 20px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Address input {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(170, 170, 170, 0.6666666667);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Address input:focus {
+    border: 2px solid #CCA471;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Apartment {
+    margin-bottom: 20px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Apartment input {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(170, 170, 170, 0.6666666667);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Apartment input:focus {
+    border: 2px solid #CCA471;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Postal {
+    display: flex;
+    gap: 20px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Postal input {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(170, 170, 170, 0.6666666667);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Postal input:focus {
+    border: 2px solid #CCA471;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Continue {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Continue a {
+    color: #CCA471;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  #Checkout .container .col-lg-6 .allRight .contact #FormForOrder .shippingForm .Continue button {
+    border: none;
+    outline: none;
+    background-color: #CCA471;
+    border-radius: 5px;
+    padding: 20px;
+    font-weight: 500;
+  }
+  #Checkout .container .col-lg-6 .allLeft {
+    border-left: 1px solid #eae7e7;
+    height: 100%;
+    padding: 0 40px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart .imgCart {
+    position: relative;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart .imgCart img {
+    border: 1px solid #d0d0d0;
+    padding: 0 10px;
+    border-radius: 5px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart .imgCart span {
+    background-color: rgba(112, 112, 112, 0.8470588235);
+    padding: 5px 10px;
+    border-radius: 100%;
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart .ContentImg {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart .ContentImg .ForInfo p {
+    font-size: 15px;
+    color: #000000;
+    font-weight: 500;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart .ContentImg .ForInfo span {
+    font-size: 12px;
+    color: #707070;
+  }
+  #Checkout .container .col-lg-6 .allLeft .singleCart .ContentImg .ForPrice span {
+    font-size: 15px;
+    color: #000000;
+  }
+  #Checkout .container .col-lg-6 .allLeft .Subtotal {
+    display: flex;
+    justify-content: space-between;
+  }
+  #Checkout .container .col-lg-6 .allLeft .Subtotal span {
+    color: #000000;
+    font-size: 15px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .Subtotal .prc {
+    font-size: 15px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .ship {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  #Checkout .container .col-lg-6 .allLeft .ship span {
+    color: #000000;
+    font-size: 15px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .ship p {
+    color: #707070;
+    font-size: 12px;
+  }
+  #Checkout .container .col-lg-6 .allLeft .total {
+    display: flex;
+    justify-content: space-between;
+  }
+  #Checkout .container .col-lg-6 .allLeft .total span {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  #Checkout .container .col-lg-6 .allLeft .total .fullprice {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  #Checkout .container .col-lg-6 .allLeft .total .fullprice .prcvalue {
+    color: #707070;
+    font-size: 12px;
+  }/*# sourceMappingURL=Checkout.css.map */

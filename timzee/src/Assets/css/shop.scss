@@ -1,0 +1,890 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+#Header{
+    background-color: #0e1d55;
+    padding: 20px;
+  
+    .container-fluid{
+        .row{
+            align-items: center;
+         nav{
+            display: flex;
+            justify-content: space-between;
+            a{
+                text-decoration: none;
+                color: #AAAAAA;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 20px;
+                text-transform: uppercase;
+                letter-spacing: .14em;
+            }
+         }
+         .site-header{
+            display: flex;
+            justify-content: end;
+            gap: 20px;
+            a{
+             text-decoration: none;
+             color: #AAAAAA;
+             font-family: 'Source Sans Pro', sans-serif;
+             font-size: 20px;
+
+            }
+         }
+        }
+    }
+  }
+
+#BreadCrump{
+    background: url(/assets/Images/slider__3_2000x_1.webp) center top no-repeat fixed;
+    background-size: cover;
+    padding: 100px;
+    position: relative;
+    z-index: 111;
+    &::before{
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: #ffffff;
+    opacity: .8;
+}
+    
+    .container{
+        .BreadCrump-all{
+            text-align: center;
+            h1{
+                font-size: 50px;
+                text-transform: uppercase;
+                color: #030d1d;
+                font-family:  'Playfair Display', serif;
+               margin-bottom: 40px;
+            }
+            a{
+                text-decoration: none;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 22px;
+                color: #000;
+            }
+            span{
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 22px;
+                color: #000;
+            }
+        }
+    }
+}   
+#AllShop{
+    background-color: #000;
+    .container-fluid{
+       .row{
+        margin: 0 calc(7% / 2);
+        .col-lg-3{
+            .FilterShop{
+                padding: 40px 0 ;
+                .BestSellers{
+                   
+                    h5{
+                        color: #ffffff;
+                text-align: left;
+                cursor: grab;
+                font-family: 'Playfair Display', serif;
+                font-size: 30px;
+               
+                position: relative;
+                &::before{
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background: #CCA471;
+                    position: absolute;
+                    bottom: 0px;
+                    right: 0;
+                   bottom: -10px;
+                    z-index: 11;
+                }
+                    }
+                    .BestSellerSlider{
+                      
+
+                        .product-single{
+                            margin-top: 30px;
+                            width: 100%;
+                            &:hover{
+                               .pro-content{
+                                   h4{
+                                       a{
+                                           color: #CCA471;
+                                       }
+                                     
+                                   }
+                               }
+                            }
+                            width: 90%;
+                              .pro-img{
+                               width: 100%;
+                               position: relative;
+                               z-index: 1;
+                               margin-bottom: 20px;
+                               &:hover{
+                                   .Smallside{
+                                      opacity: 1; 
+                                   }
+                                   .overlay{
+                                       height: 100% !important;
+                                       background-color: #505155;
+                                   }
+                                  
+                               }
+                              .Smallside{
+                               display: flex;
+                               flex-direction: column !important;
+                               position: absolute;
+                               gap: 10px;
+                               right: 10px;
+                               top: 20%;
+                               opacity: 0;
+                               transition: 0.5s;
+                               a{
+                                  
+                                   
+                                   i{
+                                       color: #ffff;
+                                       font-size: 20px;
+                                       background-color: #343535;
+                                       padding: 15PX;
+                                       transition: 0.5s;
+                                       &:hover{
+                                           background-color: #CCA471;
+                                       }
+                                   }
+                               }
+                              }
+                              .sale{
+                               span{
+                                   font-size: 16px;
+                                   font-family: 'Source Sans Pro', sans-serif;
+                                   color: #ffff;
+                                   background-color: #343435;
+                                   padding: 5px 10px;
+                                   position: absolute;
+                                   left: 10px;
+                                   top: 10px;
+                               }
+                              }
+                              .save{
+                               span{
+                                   font-size: 16px;
+                                   font-family: 'Source Sans Pro', sans-serif;
+                                   color: #ffff;
+                                   background-color: #343435;
+                                   padding: 5px 10px;
+                                   position: absolute;
+                                   right: 10px;
+                                   top: 10px;
+                               }
+                              }
+                               a{
+                                  
+                                   .overlay{
+                               position: absolute;
+                               background-color: #34353a;
+                                z-index: -1;
+                                 height: 68%;
+                                 width: 100%;
+                                 transition: 0.5s;
+                                
+                                   }
+                                   img{
+                                       width: 100%;
+                                   }
+                               }
+                              }
+                               .pro-content{
+                                   text-align: center;
+                                   h4{
+                                      
+                                       a{
+                                           
+                                           text-decoration: none;
+                                           font-family: 'Playfair Display', serif;
+                                           color:#fff;
+                                           font-size: 25px;
+                                       }
+                                   }
+                                   .pricee{
+                                       display: flex;
+                                       justify-content: center;
+                                       align-items: center;
+                                       gap: 10px;
+                                       
+                                       .prc{
+                                       
+                                           color:#AAAAAA;
+                                       
+                                           font-size: 28px;
+                                           font-weight: 600;
+                                           font-family: 'Source Sans Pro', sans-serif;
+                                       }
+                                       .oldprc{
+                                           color:#AAAAAA;
+                                           text-decoration: line-through;
+                                           font-size: 22px;
+                                           
+                                           font-family: 'Source Sans Pro', sans-serif;
+                                       }
+                                   }
+                               
+            
+                            
+                                   button{
+                                       text-transform: uppercase;
+                                       font-size: 20px;
+                                       border: none;
+                                       font-family: 'Source Sans Pro', sans-serif;
+                                       color: #ffffff;
+                                       background-color: #343435;
+                                       padding: 20px 50px;
+                                       margin-top: 20px;
+                                       position: relative;
+                                       z-index: 2;
+                                       &:hover{
+                                           &::before{
+                                               height: 100%;
+                                           }
+                                       }
+                                       &::before{
+                                           content: '';
+                                           width: 100%;
+                                           height: 4px;
+                                           background: #CCA471;
+                                           position: absolute;
+                                           bottom: 0;
+                                           right: 0;
+                                           left: 0;
+                                           z-index: -10;
+                                           transition: 0.5s;
+                                       }
+                                   }
+                               }
+                           }
+                    }
+                }
+                .availability{
+                    margin-top: 60px;
+                  h5{
+                    color: #ffffff;
+                    text-align: left;
+                    cursor: grab;
+                    font-family: 'Playfair Display', serif;
+                    font-size: 30px;
+                    margin-bottom: 40px;
+                   
+                    position: relative;
+                    &::before{
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #CCA471;
+                        position: absolute;
+                        bottom: 0px;
+                        right: 0;
+                       bottom: -10px;
+                        z-index: 11;
+                    }
+                  }  
+                  .stock{
+                    position: relative;
+                  display: flex;
+                  align-items: center;
+                  margin-top: 20px;
+               .inputStok{
+               
+                position: relative;
+                input{
+                    position: absolute;
+                    z-index: 2;
+                    left: -20px;
+                    top:10px;
+                    height: 70%;
+                    width: 70%;
+                    opacity: 0;
+                    &:checked+label {
+                        &:after {
+                            opacity: 1; 
+                        }
+                    }
+                }
+                label{
+                    position: relative;
+                    font-family: 'Source Sans Pro', sans-serif;
+                    font-size: 22px;
+                    color: #AAAAAA;
+                    display: inline-block;
+                  
+                 
+                    &:before{
+                        content: '';
+                        -webkit-appearance: none;
+                        background-color: transparent;
+                        border: 2px solid #CCA471;
+                        padding: 13px;
+                        display: inline-block;
+                        position: relative;
+                        vertical-align: middle;
+                        cursor: pointer;
+                        margin-right: 5px;
+                        margin-top: 0px;
+                        border-radius: 50%;
+                       } 
+                       &:after{
+                        content: '';
+                        opacity: 0;
+                        position: absolute;
+                        top: 6px;
+                        left: 11px;
+                        width: 8px;
+                        height: 18px;
+                        border: solid #cca471;
+                        border-width: 0 2px 2px 0;
+                        transform: rotate(45deg);
+                        box-shadow: 1px 1px 0px #030d1d;
+                       }
+               
+                }
+               }
+                    span{
+                        position: absolute;
+                        right: 0;
+                        font-family: 'Source Sans Pro', sans-serif;
+                        font-size: 22px;
+                        color: #AAAAAA;
+                      }  
+                  }
+                }
+                .Price{
+                    margin-top: 60px ;
+                    h5{
+                        color: #ffffff;
+                        text-align: left;
+                        cursor: grab;
+                        font-family: 'Playfair Display', serif;
+                        font-size: 30px;
+                        margin-bottom: 40px;       
+                        position: relative;
+                        &::before{
+                            content: '';
+                            width: 100%;
+                            height: 2px;
+                            background: #CCA471;
+                            position: absolute;
+                            bottom: 0px;
+                            right: 0;
+                           bottom: -10px;
+                            z-index: 11;
+                        }
+                    }
+                    span{
+                        font-family: 'Source Sans Pro', sans-serif;
+                        font-size: 22px;
+                        color: #AAAAAA;
+                       
+                    }
+                   .allfield{
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content: space-between;
+                    .pricefield{
+                        display: flex;
+                      flex-direction: column;
+                      .inputdiv{
+                        width: 100%;
+                        height: 70px;
+                        border:1px solid #34353a;
+                        display: flex;
+                     
+                        align-items: center;
+                        input{
+                           width: 100%;
+                          height: 40px;
+                            background-color: transparent;
+                           border: none;
+                            outline: none;
+                        }
+                      }
+                        label{
+                            font-family: 'Source Sans Pro', sans-serif;
+                            font-size: 22px;
+                            color: #AAAAAA;
+                        }
+                    }
+                   }
+                }
+                .Producttype{
+                    margin-top: 60px;
+                    h5{
+                      color: #ffffff;
+                      text-align: left;
+                      cursor: grab;
+                      font-family: 'Playfair Display', serif;
+                      font-size: 30px;
+                      margin-bottom: 40px;
+                     
+                      position: relative;
+                      &::before{
+                          content: '';
+                          width: 100%;
+                          height: 2px;
+                          background: #CCA471;
+                          position: absolute;
+                          bottom: 0px;
+                          right: 0;
+                         bottom: -10px;
+                          z-index: 11;
+                      }
+                    }  
+                    .type{
+                      position: relative;
+                    display: flex;
+                    align-items: center;
+                    margin-top: 20px;
+                    .TypeInput{
+               
+                        position: relative;
+                        input{
+                            position: absolute;
+                            z-index: 2;
+                            left: -20px;
+                            top:10px;
+                            height: 70%;
+                            width: 70%;
+                            opacity: 0;
+                            &:checked+label {
+                                &:after {
+                                    opacity: 1; 
+                                }
+                            }
+                        }
+                        label{
+                            position: relative;
+                            font-family: 'Source Sans Pro', sans-serif;
+                            font-size: 22px;
+                            color: #AAAAAA;
+                            display: inline-block;
+                          
+                         
+                            &:before{
+                                content: '';
+                                -webkit-appearance: none;
+                                background-color: transparent;
+                                border: 2px solid #CCA471;
+                                padding: 13px;
+                                display: inline-block;
+                                position: relative;
+                                vertical-align: middle;
+                                cursor: pointer;
+                                margin-right: 5px;
+                                margin-top: 0px;
+                                border-radius: 50%;
+                               } 
+                               &:after{
+                                content: '';
+                                opacity: 0;
+                                position: absolute;
+                                top: 6px;
+                                left: 11px;
+                                width: 8px;
+                                height: 18px;
+                                border: solid #cca471;
+                                border-width: 0 2px 2px 0;
+                                transform: rotate(45deg);
+                                box-shadow: 1px 1px 0px #030d1d;
+                               }
+                       
+                        }
+                       }
+                 
+                      span{
+                          position: absolute;
+                          right: 0;
+                          font-family: 'Source Sans Pro', sans-serif;
+                          font-size: 22px;
+                          color: #AAAAAA;
+                        }  
+                    }
+                  }
+                  .Brand{
+                    margin-top: 60px;
+                    h5{
+                      color: #ffffff;
+                      text-align: left;
+                      cursor: grab;
+                      font-family: 'Playfair Display', serif;
+                      font-size: 30px;
+                      margin-bottom: 40px;
+                     
+                      position: relative;
+                      &::before{
+                          content: '';
+                          width: 100%;
+                          height: 2px;
+                          background: #CCA471;
+                          position: absolute;
+                          bottom: 0px;
+                          right: 0;
+                         bottom: -10px;
+                          z-index: 11;
+                      }
+                    }  
+                    .brandd{
+                      position: relative;
+                    display: flex;
+                    align-items: center;
+                    margin-top: 20px;
+                   
+                      .BrandInput{
+               
+                        position: relative;
+                        input{
+                            position: absolute;
+                            z-index: 2;
+                            left: -20px;
+                            top:10px;
+                            height: 70%;
+                            width: 70%;
+                            opacity: 0;
+                            &:checked+label {
+                                &:after {
+                                    opacity: 1; 
+                                }
+                            }
+                        }
+                        label{
+                            position: relative;
+                            font-family: 'Source Sans Pro', sans-serif;
+                            font-size: 22px;
+                            color: #AAAAAA;
+                            display: inline-block;
+                          
+                         
+                            &:before{
+                                content: '';
+                                -webkit-appearance: none;
+                                background-color: transparent;
+                                border: 2px solid #CCA471;
+                                padding: 13px;
+                                display: inline-block;
+                                position: relative;
+                                vertical-align: middle;
+                                cursor: pointer;
+                                margin-right: 5px;
+                                margin-top: 0px;
+                                border-radius: 50%;
+                               } 
+                               &:after{
+                                content: '';
+                                opacity: 0;
+                                position: absolute;
+                                top: 6px;
+                                left: 11px;
+                                width: 8px;
+                                height: 18px;
+                                border: solid #cca471;
+                                border-width: 0 2px 2px 0;
+                                transform: rotate(45deg);
+                                box-shadow: 1px 1px 0px #030d1d;
+                               }
+                       
+                        }
+                       }
+                      span{
+                          position: absolute;
+                          right: 0;
+                          font-family: 'Source Sans Pro', sans-serif;
+                          font-size: 22px;
+                          color: #AAAAAA;
+                        }  
+                    }
+                  }
+            }
+        }
+        .col-lg-9{
+            .ShopProducts{
+                padding: 40px 0;
+                .rightContent{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 20px;
+                    border: 1px solid #34353a;
+                    .grids{
+                        display: flex;
+                        gap: 0px;
+                        i{
+                            color: #ffff;
+                            font-size: 20px;
+                            border: 1px solid #34353a;
+                            padding: 10px;
+                        }
+                    }
+                    .featured{
+                        select{
+                            width: 100%;
+                            text-align: left;
+                            color: #fff;
+                            font-size: 20px;
+                            background-color: #343535;
+                            line-height: 30px;
+                            padding:10px 20px;
+                            border: none;
+                            outline: none;
+                          
+                        }
+                    }
+                }
+                .rightboxes{
+                    .row{
+                        .col-lg-3{
+                            margin-top: 60px;
+                            .product-single{
+                                &:hover{
+                                   .pro-content{
+                                       h4{
+                                           a{
+                                               color: #CCA471;
+                                           }
+                                         
+                                       }
+                                   }
+                                }
+                                width: 90%;
+                                  .pro-img{
+                                   width: 100%;
+                                   position: relative;
+                                   z-index: 1;
+                                   margin-bottom: 20px;
+                                   &:hover{
+                                       .Smallside{
+                                          opacity: 1; 
+                                       }
+                                       .overlay{
+                                           height: 100% !important;
+                                           background-color: #505155;
+                                       }
+                                      
+                                   }
+                                  .Smallside{
+                                   display: flex;
+                                   flex-direction: column !important;
+                                   position: absolute;
+                                   gap: 10px;
+                                   right: 10px;
+                                   top: 20%;
+                                   opacity: 0;
+                                   transition: 0.5s;
+                                   a{
+                                      
+                                       
+                                       i{
+                                           color: #ffff;
+                                           font-size: 20px;
+                                           background-color: #343535;
+                                           padding: 15PX;
+                                           transition: 0.5s;
+                                           &:hover{
+                                               background-color: #CCA471;
+                                           }
+                                       }
+                                   }
+                                  }
+                                  .sale{
+                                   span{
+                                       font-size: 16px;
+                                       font-family: 'Source Sans Pro', sans-serif;
+                                       color: #ffff;
+                                       background-color: #343435;
+                                       padding: 5px 10px;
+                                       position: absolute;
+                                       left: 10px;
+                                       top: 10px;
+                                   }
+                                  }
+                                  .save{
+                                   span{
+                                       font-size: 16px;
+                                       font-family: 'Source Sans Pro', sans-serif;
+                                       color: #ffff;
+                                       background-color: #343435;
+                                       padding: 5px 10px;
+                                       position: absolute;
+                                       right: 10px;
+                                       top: 10px;
+                                   }
+                                  }
+                                   a{
+                                      
+                                       .overlay{
+                                   position: absolute;
+                                   background-color: #34353a;
+                                    z-index: -1;
+                                     height: 68%;
+                                     width: 100%;
+                                     transition: 0.5s;
+                                    
+                                       }
+                                       img{
+                                           width: 100%;
+                                       }
+                                   }
+                                  }
+                                   .pro-content{
+                                       text-align: center;
+                                       h4{
+                                          
+                                           a{
+                                               
+                                               text-decoration: none;
+                                               font-family: 'Playfair Display', serif;
+                                               color:#fff;
+                                               font-size: 25px;
+                                           }
+                                       }
+                                       .pricee{
+                                           display: flex;
+                                           justify-content: center;
+                                           align-items: center;
+                                           gap: 10px;
+                                           
+                                           .prc{
+                                           
+                                               color:#AAAAAA;
+                                           
+                                               font-size: 28px;
+                                               font-weight: 600;
+                                               font-family: 'Source Sans Pro', sans-serif;
+                                           }
+                                           .oldprc{
+                                               color:#AAAAAA;
+                                               text-decoration: line-through;
+                                               font-size: 22px;
+                                               
+                                               font-family: 'Source Sans Pro', sans-serif;
+                                           }
+                                       }
+                                       .range{
+                                           margin: 10px 0;
+                                           i{
+                                               color: #fcc43e;
+                                               font-size: 18px;
+                                           }
+                                       }
+                
+                                       .title{
+                                           
+                                           font-size: 20px;
+                                           color:#AAAAAA;
+                   
+                                           font-family: 'Source Sans Pro', sans-serif;
+                                       }
+                                       button{
+                                           text-transform: uppercase;
+                                           font-size: 20px;
+                                           border: none;
+                                           font-family: 'Source Sans Pro', sans-serif;
+                                           color: #ffffff;
+                                           background-color: #343435;
+                                           padding: 20px 50px;
+                                           margin-top: 20px;
+                                           position: relative;
+                                           z-index: 2;
+                                           &:hover{
+                                               &::before{
+                                                   height: 100%;
+                                               }
+                                           }
+                                           &::before{
+                                               content: '';
+                                               width: 100%;
+                                               height: 4px;
+                                               background: #CCA471;
+                                               position: absolute;
+                                               bottom: 0;
+                                               right: 0;
+                                               left: 0;
+                                               z-index: -10;
+                                               transition: 0.5s;
+                                           }
+                                       }
+                                   }
+                               }
+                        }
+                    }
+                }
+            }
+        }
+       } 
+    }   
+}
+
+
+
+
+#Footer{
+    background-image: url(/assets/Images/footer-img_052c2e02-57e9-473b-a7a4-2668c5104fbd.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 100px;
+    position: relative;
+    z-index: 1;
+    &::before{
+        z-index: -1;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.7;
+    }
+    .container{
+        .row{
+           .singleFooterArea{
+            text-align: left;
+            h5{
+                font-size: 28px;
+                font-family: 'Playfair Display', serif;
+                color: #fff;
+                margin-bottom: 30px;
+            }
+                ul{
+                    padding: 0;
+                    li{
+                        line-height: 45px;
+                        list-style: none;
+                        text-decoration: none;
+                        font-size: 23px;
+                        color: #AAAAAA;
+                        font-family: 'Source Sans Pro', sans-serif;
+                        i{
+                            margin-right: 10px;
+                        }
+                        a{
+                            text-decoration: none;
+                            font-size: 23px;
+                            color: #AAAAAA;
+                            font-family: 'Source Sans Pro', sans-serif;
+                        }
+                    }
+                }
+            
+           } 
+        }
+    }
+}
