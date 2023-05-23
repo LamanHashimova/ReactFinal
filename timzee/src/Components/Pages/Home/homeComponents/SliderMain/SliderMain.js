@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './sliderMain.css'
+import axios from 'axios';
 function SliderMain() {
+    const [slider, setSlider] = useState([]);
+    const loadSlider = async () => {
+        const result = await axios.get("api/Sliders/GetAllSliders");
+        setSlider(result.data)
 
+    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        loadSlider();
+   
+    }, []);
     var settings = {
         dots: false,
         infinite: true,
@@ -48,56 +59,23 @@ function SliderMain() {
 
 
 
-  const hotelCards = [
-    {
-      title:'salam',
-      info: 'Studio Room',
-      price: 'Lorem ipsum dolor sit amet, consectur dolori',
-      link: 'USD 50/Day',
-      image: 'https://images.unsplash.com/photo-1559508551-44bff1de756b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-
-    },
-    {
-        title:'salam',
-        info: 'Studio Room',
-        price: 'Lorem ipsum dolor sit amet, consectur dolori',
-        link: 'USD 50/Day',
-      image: 'https://images.unsplash.com/photo-1559508551-44bff1de756b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-
-     },
-    {
-        title:'salam',
-        info: 'Studio Room',
-        price: 'Lorem ipsum dolor sit amet, consectur dolori',
-        link: 'USD 50/Day',
-      image: 'https://images.unsplash.com/photo-1559508551-44bff1de756b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-     },
-    {
-        title:'salam',
-        info: 'Studio Room',
-        price: 'Lorem ipsum dolor sit amet, consectur dolori',
-        link: 'USD 50/Day',
-      image: 'https://images.unsplash.com/photo-1559508551-44httpsbff1de756b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-  
-    },
-  ]
 
     return (
         <div id="Slider">
             <div className="sliderBody">
                 <Slider {...settings}>
-               {hotelCards.map(slide=>
+               {slider?.map(slide=>
                 
-                <div style={{backgroundImage:`url(${slide.image})`}} key={slide.title.toString()}   className="slick-1">
+                <div style={{ backgroundImage: `url(${slide?.image})` }} className="slick-1" key={slide?.image}>
                     <div  className="slick-1-body">
-                        <h2>Alertzy</h2>
-                        <p className="p-0">{slide.title}</p>
-                        <div className="info">{slide.info}</div>
+                        <h2>{slide.mainTitle}</h2>  
+                        <p className="p-0">{slide?.subtitle}</p>
+                        <div className="info">{slide?.sliderInfo}</div>
                         <div className="offer-price">
-                            <span className="price">$ {slide.price}</span>
+                            <span className="price">${slide?.price}</span>
                         </div>
                         <div className="explore">
-                            <a href="#">{slide.link}</a>
+                            <a href="#">Explore Service</a>
                         </div>
                     </div>
                 </div>

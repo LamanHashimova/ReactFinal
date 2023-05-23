@@ -1,11 +1,12 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
+import axios from 'axios';
 import image1 from '../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp';
 import image2 from '../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp';
 import './DetailAll.css';
@@ -18,7 +19,7 @@ function Detail() {
         arrows: false,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         initialSlide: true,
         autoplay: true,
         cssEase: "linear",
@@ -51,29 +52,28 @@ function Detail() {
         ]
     };
 
-    const newarrival = [
-        {
-          title:'Analog Numeral',
-          save: '20',
-          price: '1550.00',
-          oldprice: '1550.00',
-          image:image1,
+ 
+      const loadnewArrivals = async () => {
     
-        },
-        {
-            title:'niasdlfsdkf Numeral',
-            save: '20',
-            price: '1550.00',
-            oldprice: '1550.00',
-            image:image2,
-      
-          },
-       
-       
-      ]
+        const result = await axios.get("api/Products/GetAllNewArrival");
+        setNewArrivals(result.data)
 
-    const [activeTab, setActiveTab] = useState(''); // Initialize state to store active tab name
+    };
+    const [activeTab, setActiveTab] = useState([]); // Initialize state to store active tab name
+    const [category, setCategory] = useState([]); 
+    const [newArrivals, setNewArrivals] = useState([]); 
 
+    const loadPCategories = async () => {
+    
+        const result = await axios.get("api/Categories/GetAllCategories");
+        setCategory(result.data)
+
+    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        loadPCategories();
+        loadnewArrivals();
+    }, []);
     const openReview = (evt, productName) => {
       // Get all elements with class="tabcontent" and hide them
       const tabContentList = document.getElementsByClassName('tabcontent');
@@ -104,6 +104,7 @@ return (
                     <div className="Category">
                         <h5>Category</h5>
                         <div className="accordion" id="myAccordion">
+                            
                             <div className="accordion-item">
                                 <h2 className="accordion-header" id="headingOne">
                                     <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">Wedding Watches</button>									
@@ -200,12 +201,12 @@ return (
                         <h5>New Arrivals</h5>
                         <div className="ArrivalSlider">
                             <Slider {...settings}>
-                                {newarrival.map(slide=>
+                                {newArrivals.map(slide=>
                                       <div className="product-single">
                                       <div className="pro-img">
                                           <a href="#">
                                               <div className="overlay"></div>
-                                              <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt=""/>
+                                              <img src={`data:image/jpeg;base64,${slide.mainImage}`} alt="" />
                                           </a>
                                           <div className="Smallside">
                                               <a href="#"><i className="fa-solid fa-window-restore"></i></a>
@@ -216,15 +217,15 @@ return (
                                               <span>Sale</span>
                                           </div>
                                           <div className="save">
-                                              <span>Save <b>20%</b></span>
+                                              <span>Save <b>{slide.save}%</b></span>
                                           </div>
                                       </div>
                                       <div className="pro-content">
-                                          <h4><a href="#">Analog Numeral</a></h4>
+                                          <h4><a href="#">{slide.title}</a></h4>
                                           <div className="pricee">
                                             
-                                              <p className="m-0 prc" >$1550.00</p>  
-                                              <p className="m-0 oldprc" >$1550.00</p>
+                                              <p className="m-0 prc" >${slide.price}</p>  
+                                              <p className="m-0 oldprc" >${slide.discountedPrice}</p>
                                           </div>
                                      
                                       </div>
@@ -243,23 +244,7 @@ return (
                         <div className="SingleMainImg">
                         <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt=""/>
                         </div>
-                        <div className="SliderMainImgs">
-                         <div className="SinglesliderImg">
-                         <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt=""/>
-                         </div>
-                         <div className="SinglesliderImg">
-                         <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt=""/>
-                         </div>
-                         <div className="SinglesliderImg">
-                         <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt=""/>
-                        </div>
-                        <div className="SinglesliderImg">
-                        <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt=""/>
-                        </div>
-                           <div className="SinglesliderImg">
-                           <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt=""/>
-                         </div>
-                        </div>
+                                    
                      </div>
                   </div>
                    <div className="col-lg-6">
@@ -286,7 +271,7 @@ return (
                             <p>Color:</p>
                             <div className="Colors">
                                 <div className="singleColor">
-                                    <input type="radio" name="color" checked/>
+                                    <input type="radio" name="color" />
                                     <label for="color"><i></i></label>
                                 </div>
                                 <div className="singleColor">
@@ -361,13 +346,7 @@ return (
                             <li>Divamus sit amet purus justo.</li>
                             <li>Proin molestie egestas orci ac suscipit risus posuere loremous</li>
                           </ul>
-                          <h4>Sample Ordered Lista</h4>
-                          <ul>
-                            <li>Comodous in tempor ullamcorper miaculis.</li>
-                            <li>Pellentesque vitae neque mollis urna mattis laoreet.</li>
-                            <li>Divamus sit amet purus justo.</li>
-                            <li>Proin molestie egestas orci ac suscipit risus posuere loremous</li>
-                          </ul>
+                     
                       <h4>Sample Paragraph Text</h4>
                       <blockquote>Praesent vestibulum congue tellus at fringilla. Curabitur vitae semper sem, eu convallis est. Cras felis nunc commodo eu convallis vitae interdum non nisl. Maecenas ac est sit amet augue pharetra convallis nec danos dui. Cras suscipit quam et turpis eleifend vitae malesuada magna congue. Damus id ullamcorper neque. Sed vitae mi a mi pretium aliquet ac sed elit. Pellentesque nulla eros accumsan quis justo at tincidunt lobortis denimes loremous. Suspendisse vestibulum lectus in lectus volutpat, ut dapibus purus pulvinar. Vestibulum sit amet auctor ipsum.</blockquote>
                            </div>

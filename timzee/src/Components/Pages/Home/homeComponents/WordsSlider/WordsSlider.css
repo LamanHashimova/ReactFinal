@@ -1,0 +1,21 @@
+#WordsSlider {
+    background-color: #091338;
+    padding: 100px 0;
+  }
+  #WordsSlider .container .word-all .word {
+    text-align: center;
+  }
+  #WordsSlider .container .word-all .word p {
+    display: inline-block;
+    color: #AAAAAA;
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    width: 64%;
+  }
+  #WordsSlider .container .word-all .word span {
+    color: #fff;
+    display: block;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+  

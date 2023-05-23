@@ -1,10 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import './navbar.css'
+import axios from 'axios';
 // import { useSelector } from 'react-redux';
 function Navbar() {
 
     const [basketnum, setBasketnum] = useState();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [results, setResults] = useState([]);
+
+    const debounce = (callback, delay) => {
+        let timerId;
+        return function (...args) {
+          if (timerId) {
+            clearTimeout(timerId);
+          }
+          timerId = setTimeout(() => {
+            callback(...args);
+          }, delay);
+        };
+      };
+
+    const handleSearch = async (e) => {
+
+    
+        try {
+          const response = await axios(`/api/Products/search?searchTerm=${searchTerm}`);
+        //   const data = await response.json();
+        setResults(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      const debouncedSearch = debounce(handleSearch, 300);
+ 
+    
     function BasketResult() {
         let count = 0;
     
@@ -34,6 +64,9 @@ function Navbar() {
 
     useEffect(()=>{
 BasketResult();
+
+
+// loadSearch();
     },[basketnum])
     // let baskets = JSON.parse(localStorage.getItem('basket'));
     // let data = useSelector(state => state.state.localCount);
@@ -63,7 +96,7 @@ BasketResult();
                                 <Link to={'/shop'}>Shop</Link>
                                 <Link to={'/about'}>About</Link>
                                 <a href="#">Blog</a>
-                                <Link  to={'/detail'}>Detail</Link>
+                                {/* <Link  to={'/detail'}>Detail</Link> */}
                                 <Link to={'/contact'}>Contact Us</Link>
                             </nav>
                         </div>
@@ -72,8 +105,30 @@ BasketResult();
                                 <Link to={'/login'}> <i className="fa-solid fa-user-large"></i></Link>
                                 <Link to={'/basket'}><i className="fa-solid fa-bag-shopping"></i>
                                 <span class="basketNumber">{basketnum}</span></Link>
-                                <a href="#"><i className="fa-solid fa-magnifying-glass"></i></a>
-
+                              
+                                <div className='Search'>
+                                <form class="example" onSubmit={handleSearch}>
+                                <input type="text"
+                                        value={searchTerm}
+                                        onChange={(e) => {
+                                          setSearchTerm(e.target.value);
+                                          debouncedSearch(e.target.value); // Call debouncedSearch directly with the updated search term
+                                        }}
+                                        placeholder="Search..." name="search"/>
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                                <ul className='SearchBody'>
+                                    {results.map((product) => (
+                                
+                                <li className="list-group-item disabled" key={product.id}>
+                                <a style={{ display: 'flex', alignItems: 'center',gap:'10px' }} href="#">
+                                <img style={{width:'20%'}} src={`data:image/jpeg;base64,${product.mainImage}`} alt="" />
+                                    <p style={{ margin: 0 }}>{product.title}</p>
+                                </a>
+                                </li>
+                                    ))}
+                                </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

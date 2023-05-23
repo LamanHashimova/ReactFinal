@@ -3,21 +3,45 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './ShopAll.css'
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { decrease } from '../../../../../redux/stateSlice';
 import axios from 'axios';
 
+
 function ShopAll() {
     const [products, setProducts] = useState([]);
+    const [brand, setBrands] = useState([]);
+    const [productType, setproductType] = useState([]);
     const [bestsellers, setBestSellers] = useState([]);
+ 
 
     const dispatch = useDispatch();
 
     const loadProducts = async () => {
+    
         const result = await axios.get("api/Products/GetAllProducts");
         setProducts(result.data)
 
     };
+    const loadBrands = async () => {
+    
+        const result = await axios.get("api/Brands/GetAllBrands");
+        setBrands(result.data)
+
+    };
+    const loadTypes = async () => {
+    
+        const result = await axios.get("api/Types/GetAllTypes");
+        setproductType(result.data)
+
+    };
+    // const loadBrandFilter = async () => {
+    
+    //     const result = await axios.get(`https://localhost:44330/api/Products/BrandFilter?brand=${data}`);
+    //     setBrandFilter(result.data)
+
+    // };
     const loadBestSellers = async () => {
         const result = await axios.get("api/Products/GetAllBestSellers");
         setBestSellers(result.data)
@@ -28,6 +52,8 @@ function ShopAll() {
         window.scrollTo(0, 0);
         loadProducts();
         loadBestSellers();
+        loadTypes();
+        loadBrands();
     }, []);
     var settings = {
         dots: false,
@@ -35,7 +61,7 @@ function ShopAll() {
         arrows: false,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         initialSlide: true,
         autoplay: true,
         cssEase: "linear",
@@ -119,10 +145,10 @@ function ShopAll() {
                                         {bestsellers.map(slide =>
                                             <div className="product-single">
                                                 <div className="pro-img">
-                                                    <a href="/">
+                                                    <Link to={'/detail'}>
                                                         <div className="overlay"></div>
                                                         <img src={`data:image/jpeg;base64,${slide.mainImage}`} alt="" />
-                                                    </a>
+                                                    </Link>
                                                     <div className="Smallside">
                                                         <a href="/"><i className="fa-solid fa-window-restore"></i></a>
                                                         <a href="/"><i className="fa-solid fa-heart"></i></a>
@@ -140,7 +166,7 @@ function ShopAll() {
                                                     <div className="pricee">
 
                                                         <p className="m-0 prc" >${slide.price}</p>
-                                                        <p className="m-0 oldprc" >${slide.oldprice}</p>
+                                                        <p className="m-0 oldprc" >${slide.discountedPrice}</p>
                                                     </div>
 
 
@@ -219,34 +245,32 @@ function ShopAll() {
                             </div>
                             <div className="Producttype">
                                 <h5>Product type</h5>
-                                <div className="type">
+                                {productType.map(productType=>(
+                                    <div className="type">
                                     <div className="TypeInput">
                                         <input type="checkbox" name="type" />
-                                        <label for="type"> Analog
+                                        <label for="type"> {productType.typeName}
                                         </label>
                                     </div>
                                     <span>(10)</span>
-                                </div>
-                                <div className="type">
-                                    <div className="TypeInput">
-                                        <input type="checkbox" name="type" />
-                                        <label for="type"> Automatic
-                                        </label>
                                     </div>
-                                    <span>(7)</span>
-                                </div>
-                                <div className="type">
-                                    <div className="TypeInput">
-                                        <input type="checkbox" name="type" />
-                                        <label for="type"> Digital
-                                        </label>
-                                    </div>
-                                    <span>(7)</span>
-                                </div>
+                                ))}
+                               
+                           
                             </div>
                             <div className="Brand">
                                 <h5>Brand</h5>
+                                {brand.map(brand=>(
                                 <div className="brandd">
+                                <div className="BrandInput">
+                                    <input type="checkbox" name="brnd" />
+                                    <label for="brnd">    {brand.name}
+                                    </label>
+                                </div>
+                                <span>(0)</span>
+                                </div>
+                                ))}
+                                {/* <div className="brandd">
                                     <div className="BrandInput">
                                         <input type="checkbox" name="brnd" />
                                         <label for="brnd"> Baggit
@@ -269,15 +293,8 @@ function ShopAll() {
                                         </label>
                                     </div>
                                     <span>(2)</span>
-                                </div>
-                                <div className="brandd">
-                                    <div className="BrandInput">
-                                        <input type="checkbox" name="brnd" />
-                                        <label for="brnd">    Timzee
-                                        </label>
-                                    </div>
-                                    <span>(0)</span>
-                                </div>
+                                </div> */}
+                               
                             </div>
                         </div>
                     </div>
@@ -303,14 +320,16 @@ function ShopAll() {
                             </div>
                             <div className="rightboxes">
                                 <div className="row">
-                                    {products.map((product=>
-                                         <div className="col-lg-3">
+                                
+                                      {products && products.length > 0 ? (
+                                        products.map(product => (
+                                            <div className="col-lg-3" >
                                          <div className="product-single">
                                              <div className="pro-img">
-                                                 <a href="/">
+                                                 <Link to={'/detail'} >
                                                      <div className="overlay"></div>
-                                                     <img src={`data:image/jpeg;base64,${product.mainImage}`} alt="" />
-                                                 </a>
+                                                     <img key={product.id} src={`data:image/jpeg;base64,${product.mainImage}`} alt="" />
+                                                 </Link>
                                                  <div className="Smallside">
                                                      <a href="/"><i className="fa-solid fa-window-restore"></i></a>
                                                      <a href="/"><i className="fa-solid fa-heart"></i></a>
@@ -328,477 +347,21 @@ function ShopAll() {
                                                  <div className="pricee">
  
                                                      <p className="m-0 prc" >${product.price}</p>
-                                                     <p className="m-0 oldprc" >${product.oldprice}</p>
+                                                     <p className="m-0 oldprc" >${product.discountedPrice}</p>
                                                  </div>
-                                                 <div className="range">
-                                                     <i className="fa-solid fa-star"></i>
-                                                     <i className="fa-solid fa-star"></i>
-                                                     <i className="fa-solid fa-star"></i>
-                                                     <i className="fa-solid fa-star"></i>
-                                                     <i className="fa-solid fa-star"></i>
-                                                 </div>
+                                           
                                                  <p className="m-0 title">{product.brand.name}</p>
                                                  <button onClick={(e) => addToBasket(product)}>Add to cart</button>
                                              </div>
                                          </div>
                                      </div>
-                                        ))}
-                                    {/* <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3">
-                                        <div className="product-single">
-                                            <div className="pro-img">
-                                                <a href="/">
-                                                    <div className="overlay"></div>
-                                                    <img src={require('../../../../../Assets/Images/Watch5_0f753270-74d5-471c-b694-5f55d31a0f0e_600x.webp')} alt="" />
-                                                </a>
-                                                <div className="Smallside">
-                                                    <a href="/"><i className="fa-solid fa-window-restore"></i></a>
-                                                    <a href="/"><i className="fa-solid fa-heart"></i></a>
-                                                    <a id="OpenModall" href="/"><i className="fa-solid fa-magnifying-glass"></i></a>
-                                                </div>
-                                                <div className="sale">
-                                                    <span>Sale</span>
-                                                </div>
-                                                <div className="save">
-                                                    <span>Save <b>20%</b></span>
-                                                </div>
-                                            </div>
-                                            <div className="pro-content">
-                                                <h4><a href="/">Analog Numeral</a></h4>
-                                                <div className="pricee">
-
-                                                    <p className="m-0 prc" >$1550.00</p>
-                                                    <p className="m-0 oldprc" >$1550.00</p>
-                                                </div>
-                                                <div className="range">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                </div>
-                                                <p className="m-0 title">Baggit</p>
-                                                <button>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div> */}
+                                        ))
+                                      ) : (
+                                        <p>Loading products...</p>
+                                      )}
+                                   
+                                      
+                                    
                                 </div>
                             </div>
                         </div>
