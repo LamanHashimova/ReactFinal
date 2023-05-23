@@ -36,7 +36,7 @@ function Detail(props) {
   };
 
   function initPromise() {
-    const response = axios.get(`http://lamanhashimovaa-001-site1.ctempurl.com/api/Products/GetProduct/${id}`)
+    const response = axios.get(`http://localhost:44330/api/Products/GetProduct/${id}`)
     
     return new Promise(function (res, rej) {
       res(response);
@@ -87,7 +87,7 @@ function Detail(props) {
    
         const loadnewArrivals = async () => {
       
-          const result = await axios.get("http://lamanhashimovaa-001-site1.ctempurl.com/api/Products/GetAllNewArrival");
+          const result = await axios.get("http://localhost:44330/api/Products/GetAllNewArrival");
           setNewArrivals(result?.data)
   
       };
@@ -140,25 +140,25 @@ function Detail(props) {
     
        
 
-          const result4 = await axios.get("http://lamanhashimovaa-001-site1.ctempurl.com/api/ProductMaterials/GetAllProductMaterials")
+          const result4 = await axios.get("http://localhost:44330/api/ProductMaterials/GetAllProductMaterials")
           setAllMaterials(result4?.data)
           
       };
       const loadColors = async () => {
 
-          const result3 = await axios.get("http://lamanhashimovaa-001-site1.ctempurl.com/api/ProductColors/GetAllProductColors")
+          const result3 = await axios.get("http://localhost:44330/api/ProductColors/GetAllProductColors")
           setAllColors(result3?.data)
           
       };
       const loadSizes = async () => {
   
 
-          const result2 = await axios.get("http://lamanhashimovaa-001-site1.ctempurl.com/api/ProductSizes/GetAllProductSizes")
+          const result2 = await axios.get("http://localhost:44330/api/ProductSizes/GetAllProductSizes")
           setAllSizes(result2?.data)
         
       };
       const loadTypes = async () => {
-        const result1 = await axios.get("http://lamanhashimovaa-001-site1.ctempurl.com/api/Types/GetAllTypes");
+        const result1 = await axios.get("http://localhost:44330/api/Types/GetAllTypes");
         setAllTypes(result1?.data)
      
     
@@ -166,7 +166,7 @@ function Detail(props) {
       };
       const loadCategories = async () => {
      
-          const result = await axios.get("http://lamanhashimovaa-001-site1.ctempurl.com/api/Categories/GetAllCategories");
+          const result = await axios.get("http://localhost:44330/api/Categories/GetAllCategories");
           setCategory(result?.data)
 
     

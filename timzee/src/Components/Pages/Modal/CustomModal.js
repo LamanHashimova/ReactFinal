@@ -98,7 +98,7 @@ function CustomModal({productId,onClose}) {
   }, [productId]);
 
   // function initPromise() {
-  //   const response = axios.get(`http://lamanhashimovaa-001-site1.ctempurl.com/api/Products/GetProduct/${id}`);
+  //   const response = axios.get(`http://localhost:44330/api/Products/GetProduct/${id}`);
 
   //   return new Promise(function (res, rej) {
   //     res(response);

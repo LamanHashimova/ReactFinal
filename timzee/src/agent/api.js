@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://lamanhashimovaa-001-site1.ctempurl.com/api/',
+  baseURL: 'http://localhost:44330/api/',
 });
 
 api.interceptors.request.use((config) => {

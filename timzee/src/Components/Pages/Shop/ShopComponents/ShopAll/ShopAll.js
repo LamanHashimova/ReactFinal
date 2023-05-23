@@ -32,7 +32,7 @@ function ShopAll() {
     const [totalCount,setTotalCount] = React.useState()
    
     const [isSidebarOpen, setSidebarOpen] = useState(false);
- const [modalOpen, setModalOpen] = useState(false);
+
     const [productId, setProductId] = useState();
 
     const [selectedProductId , setSelectProductId] = useState(null);
