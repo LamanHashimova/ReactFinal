@@ -35,7 +35,7 @@ function ProductCategory() {
 }
     const loadnewArrivals = async () => {
       
-        const result = await axios.get("https://localhost:44330/api/Products/GetAllNewArrival");
+        const result = await axios.get("http://lamanhashimovaa-001-site1.ctempurl.com/api/Products/GetAllNewArrival");
         setNewArrivals(result?.data)
 
     };

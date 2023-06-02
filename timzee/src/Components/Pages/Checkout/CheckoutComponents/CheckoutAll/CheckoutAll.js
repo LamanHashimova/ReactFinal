@@ -50,7 +50,7 @@ function CheckoutAll() {
     async function create(e) {
         e.preventDefault();
 debugger
-        await axios.post('https://localhost:44330/api/Orders/CreateOrder',
+        await axios.post('http://lamanhashimovaa-001-site1.ctempurl.com/api/Orders/CreateOrder',
             bodyParameters
             //,
             // {

@@ -10,7 +10,7 @@ function BlogIndex(props) {
     const [blog, setBlog] = useState(); 
    
     function initPromise() {
-        const response = axios.get(`https://localhost:44330/api/Blogs/GetBlog/${id}`);
+        const response = axios.get(`http://lamanhashimovaa-001-site1.ctempurl.com/api/Blogs/GetBlog/${id}`);
         
         return new Promise(function (res, rej) {
           res(response);

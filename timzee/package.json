@@ -2,7 +2,7 @@
   "name": "timzee",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:44330",
+  "proxy": "http://lamanhashimovaa-001-site1.ctempurl.com",
   "dependencies": {
     "@brainhubeu/react-carousel": "^2.0.4",
     "@emotion/react": "^11.11.0",
