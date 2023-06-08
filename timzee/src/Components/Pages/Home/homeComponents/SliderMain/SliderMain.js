@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './sliderMain.css'
 import axios from 'axios';
+import api from '../../../../../agent/api'
 function SliderMain() {
     const [slider, setSlider] = useState([]);
     const [base64, setBase64] = useState("");
@@ -34,7 +35,7 @@ function SliderMain() {
     console.log({slider});
 
     const loadSlider = async () => {
-        const result = await axios.get("api/Sliders/GetAllSliders");
+        const result = await api.get("api/Sliders/GetAllSliders");
         setSlider(result.data)
         console.log(result.data)
     setBase64("data:image/jpeg;base64,");

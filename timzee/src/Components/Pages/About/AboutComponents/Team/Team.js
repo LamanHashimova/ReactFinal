@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import api from '../../../../../agent/api'
 import './Team.css'
 
 
@@ -8,7 +8,7 @@ function Team() {
     const [team, setTeams] = useState([]);
     const loadTeams = async () => {
     
-        const result = await axios.get("api/Teams/GetAllTeams");
+        const result = await api.get("api/Teams/GetAllTeams");
         setTeams(result.data)
 
     };

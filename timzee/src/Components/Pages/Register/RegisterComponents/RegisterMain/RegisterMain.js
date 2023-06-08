@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './RegisterMain.css'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../../../../agent/api'
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -23,7 +23,7 @@ function RegisterMain() {
     }
     async function register(e) {
 
-        await axios.post('api/Auth/Register',
+        await api.post('api/Auth/Register',
             bodyParametres
 
         )

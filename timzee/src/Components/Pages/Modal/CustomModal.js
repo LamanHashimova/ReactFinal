@@ -36,13 +36,13 @@ function CustomModal({productId,onClose}) {
   
 
   const loadProducts = async (id) => {
-    const response = await api.get(`Products/GetProduct/${id}`);
+    const response = await api.get(`api/Products/GetProduct/${id}`);
     setProducts(response?.data);
-    const result2 = await api.get("ProductSizes/GetAllProductSizes")
+    const result2 = await api.get("api/ProductSizes/GetAllProductSizes")
     setAllSizes(result2?.data)
-    const result3 = await api.get("ProductColors/GetAllProductColors")
+    const result3 = await api.get("api/ProductColors/GetAllProductColors")
     setAllColors(result3?.data)
-    const result4 = await api.get("ProductMaterials/GetAllProductMaterials")
+    const result4 = await api.get("api/ProductMaterials/GetAllProductMaterials")
     setAllMaterials(result4?.data)
   };
   function addToBasket(product) {

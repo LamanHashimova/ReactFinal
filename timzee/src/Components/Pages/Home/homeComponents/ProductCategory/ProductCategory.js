@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './ProductCategory.css'
 
-import axios from 'axios';
+import api from '../../../../../agent/api'
 import { Link } from '@mui/material';
+
 
 
 function ProductCategory() {
@@ -35,17 +36,17 @@ function ProductCategory() {
 }
     const loadnewArrivals = async () => {
       
-        const result = await axios.get("http://localhost:44330/api/Products/GetAllNewArrival");
+        const result = await api.get("api/Products/GetAllNewArrival");
         setNewArrivals(result?.data)
 
     };
     const loadBestSellers = async () => {
-        const result = await axios.get("api/Products/GetAllBestSellers");
+        const result = await api.get("api/Products/GetAllBestSellers");
         setBestSellers(result?.data)
 
     };
     const loadPopular = async () => {
-        const result = await axios.get("api/Products/GetAllPopular");
+        const result = await api.get("api/Products/GetAllPopular");
         setPopular(result?.data)
 
     };

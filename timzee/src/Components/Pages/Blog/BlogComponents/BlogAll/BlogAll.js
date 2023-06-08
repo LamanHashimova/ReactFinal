@@ -4,7 +4,7 @@ import Stack from "@mui/material/Stack";
 import { Link } from 'react-router-dom';
 import './BlogAll.css'
 
-import axios from 'axios';
+import api from '../../../../../agent/api'
 
 function BlogAll() {
     const [blog, setBlog] = useState([]);
@@ -21,13 +21,13 @@ function BlogAll() {
     };
 
     const loadTags = async () => {
-        const result = await axios.get("api/Tags/GetAllTags");
+        const result = await api.get("api/Tags/GetAllTags");
         setTags(result?.data)
         
 
     };
     const loadBlogs = async () => {
-        const result = await axios.get(`api/Blogs/GetAllPaginationBlog?skip=${Skip}&take=${Take}`);
+        const result = await api.get(`api/Blogs/GetAllPaginationBlog?skip=${Skip}&take=${Take}`);
         setBlog(result?.data?.blogs)
         setTotalCount(result?.data?.totalCount)
 

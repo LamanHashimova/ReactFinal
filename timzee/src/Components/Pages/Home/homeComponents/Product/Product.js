@@ -8,7 +8,8 @@ import { Link } from '@mui/material';
 import { useDispatch } from 'react-redux'
 import { decrease } from '../../../../../redux/stateSlice';
 import './Product.css'
-import axios from 'axios';
+import api from '../../../../../agent/api'
+
 function Product() {
     const [products, setProducts] = useState([]);
     const [popular, setPopular] = useState([]);
@@ -164,19 +165,19 @@ function addToBasket(product) {
     };
     const loadProducts = async () => {
 
-        const result = await axios.get("api/Products/GetAllProducts");
+        const result = await api.get("api/Products/GetAllProducts");
         setProducts(result.data)
 
     };
     const loadPopulars = async () => {
 
-        const result = await axios.get("api/Products/GetAllPopular");
+        const result = await api.get("api/Products/GetAllPopular");
         setPopular(result.data)
 
     };
     const loadBestSellers = async () => {
 
-        const result = await axios.get("api/Products/GetAllBestSellers");
+        const result = await api.get("api/Products/GetAllBestSellers");
         setBestSeller(result.data)
 
     };

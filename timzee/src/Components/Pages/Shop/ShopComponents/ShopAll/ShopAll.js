@@ -6,13 +6,12 @@ import './ShopAll.css'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { decrease } from '../../../../../redux/stateSlice';
-import axios from 'axios';
+import api from '../../../../../agent/api'
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import CustomModal  from '../../../Modal/CustomModal.js';
 import ProductModal from '../../../Modal/ProductModal';
 import { useParams } from 'react-router-dom';
-
 import Sidebar from '../../../../layout/Sidebar/Sidebar';
 import { event } from 'jquery';
 
@@ -80,7 +79,7 @@ function ShopAll() {
         const from = minVal && Number(minVal)
         const url = `${baseUrl}?${params.toString()}&${paramsType.toString()}from=${from || 0}&to=${to || 999999999}&availability=${selectedOption || ""}&skip=${Skip}&take=${Take}`;
              
-        axios.get(`${url}`).then(res =>{
+       api.get(`${url}`).then(res =>{
             setTotalCount(res?.data?.totalCount)
             setProducts(res?.data?.data)
         }).catch(err=>console.log(err))
@@ -94,25 +93,25 @@ function ShopAll() {
 
     const loadProducts = async () => {
 
-        const result = await axios.get("api/Products/GetAllProducts");
+        const result = await api.get("api/Products/GetAllProducts");
         setProducts(result?.data)
 
     };
     const loadBrands = async () => {
 
-        const result = await axios.get("api/Brands/GetAllBrands");
+        const result = await api.get("api/Brands/GetAllBrands");
         setBrands(result.data)
 
     };
     const loadTypes = async () => {
 
-        const result = await axios.get("api/Types/GetAllTypes");
+        const result = await api.get("api/Types/GetAllTypes");
         setproductType(result?.data)
 
     };
 
     const loadBestSellers = async () => {
-        const result = await axios.get("api/Products/GetAllBestSellers");
+        const result = await api.get("api/Products/GetAllBestSellers");
         setBestSellers(result?.data)
 
     };

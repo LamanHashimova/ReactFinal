@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './LoginMain.css'
-import axios from 'axios';
+import api from '../../../../../agent/api'
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function LoginMain() {
     async function login(e) {
         e.preventDefault();
     
-        await axios.post(`api/Auth/Login`, {
+        await api.post(`api/Auth/Login`, {
           Email: email,
           Password: password
         }, { 'Content-Type': 'multipart/form-data' })

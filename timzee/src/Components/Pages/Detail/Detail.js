@@ -13,7 +13,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
-import axios from 'axios';
+import api from '../../../agent/api'
 
 import '../Detail/DetailComponents/Detail/DetailAll.css';
 import { useParams } from 'react-router-dom';
@@ -36,7 +36,7 @@ function Detail(props) {
   };
 
   function initPromise() {
-    const response = axios.get(`http://localhost:44330/api/Products/GetProduct/${id}`)
+    const response = api.get(`api/Products/GetProduct/${id}`)
     
     return new Promise(function (res, rej) {
       res(response);
@@ -87,7 +87,7 @@ function Detail(props) {
    
         const loadnewArrivals = async () => {
       
-          const result = await axios.get("http://localhost:44330/api/Products/GetAllNewArrival");
+          const result = await api.get("api/Products/GetAllNewArrival");
           setNewArrivals(result?.data)
   
       };
@@ -140,25 +140,25 @@ function Detail(props) {
     
        
 
-          const result4 = await axios.get("http://localhost:44330/api/ProductMaterials/GetAllProductMaterials")
+          const result4 = await api.get("api/ProductMaterials/GetAllProductMaterials")
           setAllMaterials(result4?.data)
           
       };
       const loadColors = async () => {
 
-          const result3 = await axios.get("http://localhost:44330/api/ProductColors/GetAllProductColors")
+          const result3 = await api.get("api/ProductColors/GetAllProductColors")
           setAllColors(result3?.data)
           
       };
       const loadSizes = async () => {
   
 
-          const result2 = await axios.get("http://localhost:44330/api/ProductSizes/GetAllProductSizes")
+          const result2 = await api.get("api/ProductSizes/GetAllProductSizes")
           setAllSizes(result2?.data)
         
       };
       const loadTypes = async () => {
-        const result1 = await axios.get("http://localhost:44330/api/Types/GetAllTypes");
+        const result1 = await api.get("api/Types/GetAllTypes");
         setAllTypes(result1?.data)
      
     
@@ -166,7 +166,7 @@ function Detail(props) {
       };
       const loadCategories = async () => {
      
-          const result = await axios.get("http://localhost:44330/api/Categories/GetAllCategories");
+          const result = await api.get("api/Categories/GetAllCategories");
           setCategory(result?.data)
 
     
