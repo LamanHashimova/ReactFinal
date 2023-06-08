@@ -4,7 +4,7 @@ import './CheckoutAll.css'
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../../../../agent/api'
 import Product from '../../../Home/homeComponents/Product/Product';
 function CheckoutAll() {
     const [user, setUser] = useState();
@@ -50,7 +50,7 @@ function CheckoutAll() {
     async function create(e) {
         e.preventDefault();
 debugger
-        await axios.post('http://localhost:44330/api/Orders/CreateOrder',
+        await api.post('api/Orders/CreateOrder',
             bodyParameters
             //,
             // {
