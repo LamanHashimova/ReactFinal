@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://lamanhashimovaa-001-site1.ctempurl.com/',
+  baseURL: 'https://timzeeback.azurewebsites.net/',
 });
 
 export default api;

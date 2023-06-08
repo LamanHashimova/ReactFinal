@@ -17,7 +17,7 @@ function RegisterMain() {
     const bodyParametres = {
         Name: name,
         Surname: surname,
-        Email: email,
+        Email: email,   
         UserName: username,
         Password: password,
     }
